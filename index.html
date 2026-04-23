@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Morning Edition</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --blue:   #417DC1;
+      --red:    #990000;
+      --yellow: #FFC72C;
+      --brown:  #713907;
+      --black:  #000000;
+      --pearl:  #FAFAFA;
+      --fd: 'Playfair Display', Georgia, serif;
+      --fb: 'DM Sans', sans-serif;
+      --fm: 'DM Mono', monospace;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--black);
+      color: var(--pearl);
+      font-family: var(--fb);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── MASTHEAD ── */
+    .masthead {
+      background: var(--black);
+      border-bottom: 5px solid var(--yellow);
+      padding: 4rem 5rem 3rem;
+    }
+    .pub-name {
+      font-family: var(--fd);
+      font-size: clamp(4rem, 12vw, 11rem);
+      font-weight: 900;
+      line-height: 0.88;
+      color: var(--pearl);
+      letter-spacing: -0.02em;
+    }
+    .pub-name em { font-style: italic; font-weight: 400; color: var(--yellow); }
+    .pub-sub {
+      font-family: var(--fm);
+      font-size: 0.68rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(250,250,250,0.35);
+      margin-top: 1.2rem;
+    }
+    .pub-desc {
+      font-family: var(--fb);
+      font-size: 1.05rem;
+      font-weight: 300;
+      font-style: italic;
+      color: rgba(250,250,250,0.5);
+      margin-top: 1rem;
+      max-width: 520px;
+      line-height: 1.6;
+    }
+
+    /* ── RAINBOW STRIPE ── */
+    .stripe {
+      height: 5px;
+      background: linear-gradient(90deg, var(--yellow), var(--red), var(--blue), var(--brown));
+    }
+
+    /* ── LATEST ISSUE ── */
+    .latest-section {
+      padding: 4rem 5rem 3rem;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    .section-label {
+      font-family: var(--fm);
+      font-size: 0.62rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--yellow);
+      margin-bottom: 1.5rem;
+    }
+    .latest-card {
+      background: #111;
+      border: 1px solid #222;
+      padding: 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 2rem;
+      text-decoration: none;
+      transition: border-color 0.15s, background 0.15s;
+    }
+    .latest-card:hover {
+      border-color: var(--yellow);
+      background: #161616;
+    }
+    .latest-date {
+      font-family: var(--fd);
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 900;
+      color: var(--pearl);
+      line-height: 1;
+    }
+    .latest-date em { font-style: italic; font-weight: 400; color: var(--yellow); }
+    .latest-meta {
+      font-family: var(--fm);
+      font-size: 0.65rem;
+      color: rgba(250,250,250,0.35);
+      letter-spacing: 0.1em;
+      margin-top: 0.5rem;
+    }
+    .latest-cta {
+      font-family: var(--fd);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--yellow);
+      border: 2px solid var(--yellow);
+      padding: 0.8rem 2rem;
+      white-space: nowrap;
+      transition: background 0.15s, color 0.15s;
+    }
+    .latest-card:hover .latest-cta {
+      background: var(--yellow);
+      color: var(--black);
+    }
+
+    /* ── ARCHIVE ── */
+    .archive-section {
+      padding: 3rem 5rem 5rem;
+    }
+    .archive-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 3px;
+      margin-top: 2rem;
+    }
+    .archive-card {
+      background: #0d0d0d;
+      border: 1px solid #1a1a1a;
+      padding: 1.8rem;
+      text-decoration: none;
+      display: block;
+      transition: border-color 0.15s, background 0.15s;
+      position: relative;
+      overflow: hidden;
+    }
+    .archive-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: var(--blue);
+      opacity: 0;
+      transition: opacity 0.15s;
+    }
+    .archive-card:hover { border-color: #333; background: #111; }
+    .archive-card:hover::before { opacity: 1; }
+    .archive-date {
+      font-family: var(--fd);
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--pearl);
+      line-height: 1.2;
+    }
+    .archive-weekday {
+      font-family: var(--fm);
+      font-size: 0.6rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(250,250,250,0.3);
+      margin-top: 0.4rem;
+    }
+    .archive-arrow {
+      font-family: var(--fm);
+      font-size: 0.65rem;
+      color: var(--blue);
+      margin-top: 1.2rem;
+      letter-spacing: 0.1em;
+    }
+
+    /* ── EMPTY STATE ── */
+    .empty-state {
+      font-family: var(--fm);
+      font-size: 0.75rem;
+      color: rgba(250,250,250,0.2);
+      letter-spacing: 0.1em;
+      padding: 3rem 0;
+    }
+
+    /* ── FOOTER ── */
+    .mag-footer {
+      background: var(--black);
+      border-top: 5px solid var(--yellow);
+      padding: 2.5rem 5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .footer-brand {
+      font-family: var(--fd);
+      font-size: 1.6rem;
+      font-weight: 900;
+      color: var(--pearl);
+    }
+    .footer-brand em { font-style: italic; font-weight: 400; color: var(--yellow); }
+    .footer-meta {
+      font-family: var(--fm);
+      font-size: 0.58rem;
+      letter-spacing: 0.1em;
+      color: rgba(250,250,250,0.2);
+      text-align: right;
+      line-height: 2;
+    }
+
+    @media (max-width: 860px) {
+      .masthead, .latest-section, .archive-section, .mag-footer {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+      }
+      .latest-card { flex-direction: column; align-items: flex-start; }
+      .mag-footer { flex-direction: column; }
+      .footer-meta { text-align: left; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="pub-name">Morning<em>.</em></div>
+  <div class="pub-sub">Daily · HN · Reddit · Substack · kaswari.net</div>
+  <div class="pub-desc">A daily magazine curated from Hacker News, Reddit, and Substack. Three sections — MOVE, EAT, SLEEP — delivered every morning.</div>
+</header>
+
+<div class="stripe"></div>
+
+<div id="latest-section" class="latest-section">
+  <div class="section-label">Latest Issue</div>
+  <div id="latest-container"></div>
+</div>
+
+<div class="stripe"></div>
+
+<div class="archive-section">
+  <div class="section-label">Past Issues</div>
+  <div id="archive-grid" class="archive-grid"></div>
+</div>
+
+<footer class="mag-footer">
+  <div class="footer-brand">Morning<em>.</em></div>
+  <div class="footer-meta">
+    Generated by Claude · kaswari.net<br>
+    HN + Reddit + Substack · Daily at 7am
+  </div>
+</footer>
+
+<script>
+  // Scan for magazine files by trying dates going back up to 90 days
+  async function findIssues() {
+    const issues = [];
+    const today = new Date();
+
+    const checks = [];
+    for (let i = 0; i < 90; i++) {
+      const d = new Date(today);
+      d.setDate(d.getDate() - i);
+      const dateStr = d.toISOString().slice(0, 10);
+      checks.push(dateStr);
+    }
+
+    // Check all dates in parallel
+    const results = await Promise.all(
+      checks.map(async dateStr => {
+        try {
+          const res = await fetch(`magazines/${dateStr}.html`, { method: 'HEAD' });
+          return res.ok ? dateStr : null;
+        } catch {
+          return null;
+        }
+      })
+    );
+
+    return results.filter(Boolean);
+  }
+
+  function formatDate(dateStr) {
+    const d = new Date(dateStr + "T12:00:00Z");
+    return {
+      full: d.toLocaleDateString("en-AU", { weekday: "long", year: "numeric", month: "long", day: "numeric" }),
+      short: d.toLocaleDateString("en-AU", { year: "numeric", month: "long", day: "numeric" }),
+      weekday: d.toLocaleDateString("en-AU", { weekday: "long" }),
+      day: d.toLocaleDateString("en-AU", { day: "numeric", month: "long" }),
+      year: d.getFullYear(),
+    };
+  }
+
+  async function render() {
+    const issues = await findIssues();
+
+    const latestContainer = document.getElementById("latest-container");
+    const archiveGrid = document.getElementById("archive-grid");
+
+    if (!issues.length) {
+      latestContainer.innerHTML = `<div class="empty-state">No issues yet — run node generate.js to create your first issue.</div>`;
+      return;
+    }
+
+    // Latest issue
+    const latest = issues[0];
+    const ld = formatDate(latest);
+    latestContainer.innerHTML = `
+      <a class="latest-card" href="magazines/${latest}.html">
+        <div>
+          <div class="latest-date">${ld.day}<em>,</em> ${ld.year}</div>
+          <div class="latest-meta">${ld.weekday} · Today's Edition</div>
+        </div>
+        <div class="latest-cta">Read Today →</div>
+      </a>`;
+
+    // Archive (everything except latest)
+    const archive = issues.slice(1);
+    if (!archive.length) {
+      archiveGrid.innerHTML = `<div class="empty-state">More issues will appear here as they are published.</div>`;
+      return;
+    }
+
+    archiveGrid.innerHTML = archive.map(dateStr => {
+      const d = formatDate(dateStr);
+      return `
+        <a class="archive-card" href="magazines/${dateStr}.html">
+          <div class="archive-date">${d.day}, ${d.year}</div>
+          <div class="archive-weekday">${d.weekday}</div>
+          <div class="archive-arrow">Read issue →</div>
+        </a>`;
+    }).join("");
+  }
+
+  render();
+</script>
+
+</body>
+</html>
