@@ -79,12 +79,12 @@ const SECTIONS = {
       "nuclear","space","gadgets","product","competition","china","europe",
       "treaty","summit","protest","strike","crisis","collapse","invasion"
     ],
-    bg:        P.black,
-    headColor: P.yellow,
+    bg:        "#FFFDF7",
+    headColor: P.red,
     accent:    P.red,
-    cardBg:    "#111111",
-    cardBorder:"#222222",
-    inkColor:  P.pearl,
+    cardBg:    "#FFFFFF",
+    cardBorder:"#EDE8DF",
+    inkColor:  "#1C1008",
   },
   EAT: {
     label:   "EAT",
@@ -99,12 +99,12 @@ const SECTIONS = {
       "recipe","food","cook","restaurant","chef","dish","eat","meal",
       "ingredient","flavour","flavor","wine","coffee","cuisine","kitchen"
     ],
-    bg:        P.pearl,
-    headColor: P.brown,
+    bg:        "#F7F9FC",
+    headColor: P.blue,
     accent:    P.blue,
-    cardBg:    "#F0EAD6",
-    cardBorder:"#DDD0BC",
-    inkColor:  "#1A0E04",
+    cardBg:    "#FFFFFF",
+    cardBorder:"#DDE6F0",
+    inkColor:  "#0D1A2B",
   },
   SLEEP: {
     label:   "SLEEP",
@@ -117,12 +117,12 @@ const SECTIONS = {
       "sleep","dream","quiet","slow","contemplative","beautiful","wonder",
       "poetry","ritual","travel","landscape","garden","solitude","reflection"
     ],
-    bg:        "#0B1220",
-    headColor: P.pearl,
-    accent:    P.yellow,
-    cardBg:    "rgba(65,125,193,0.09)",
-    cardBorder:"rgba(65,125,193,0.2)",
-    inkColor:  P.pearl,
+    bg:        "#F9F7F4",
+    headColor: P.brown,
+    accent:    P.brown,
+    cardBg:    "#FFFFFF",
+    cardBorder:"#E8E0D4",
+    inkColor:  "#1C1008",
   }
 };
 
@@ -375,118 +375,116 @@ function renderHTML(sections) {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Morning Edition · ${DATE}</title>
+  <title>Kaswari News · ${DATE}</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,600;1,300;1,600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --blue: ${P.blue}; --red: ${P.red}; --yellow: ${P.yellow};
-      --brown: ${P.brown}; --pearl: ${P.pearl};
-      --fd: 'Playfair Display', Georgia, serif;
-      --fb: 'DM Sans', sans-serif;
-      --fm: 'DM Mono', monospace;
+      --blue:   ${P.blue};
+      --red:    ${P.red};
+      --yellow: ${P.yellow};
+      --brown:  ${P.brown};
+      --black:  ${P.black};
+      --pearl:  ${P.pearl};
+      --ink:    #1C1008;
+      --muted:  #8A7F74;
+      --rule:   #E2DAD0;
+      --fh: 'La Orleans', 'Cormorant Garamond', 'Palatino Linotype', Georgia, serif;
+      --fs: 'Bellerose', 'EB Garamond', 'Palatino', Georgia, serif;
+      --fb: 'EB Garamond', 'Garamond', Georgia, serif;
+      --fm: 'DM Mono', 'Courier New', monospace;
     }
     html { scroll-behavior: smooth; }
-    body { font-family: var(--fb); font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    body { background: #FDFAF5; color: var(--ink); font-family: var(--fb); font-size: 17px; line-height: 1.7; -webkit-font-smoothing: antialiased; }
     a { text-decoration: none; }
 
-    .masthead {
-      background: #000; border-bottom: 5px solid var(--yellow);
-      padding: 3rem 5rem 2.5rem;
-      display: grid; grid-template-columns: 1fr auto; align-items: end; gap: 2rem;
-    }
-    .pub-name {
-      font-family: var(--fd); font-size: clamp(4rem, 11vw, 10rem);
-      font-weight: 900; line-height: 0.88; color: var(--pearl); letter-spacing: -0.02em;
-    }
-    .pub-name em { font-style: italic; font-weight: 400; color: var(--yellow); }
-    .pub-sub {
-      font-family: var(--fm); font-size: 0.65rem; letter-spacing: 0.18em;
-      text-transform: uppercase; color: rgba(250,250,250,0.35); margin-top: 1rem;
-    }
+    /* ── COLOUR BAR — all 5 hex colours ── */
+    .colour-bar { height: 4px; background: linear-gradient(90deg, var(--blue) 0%, var(--blue) 20%, var(--red) 20%, var(--red) 40%, var(--yellow) 40%, var(--yellow) 60%, var(--brown) 60%, var(--brown) 80%, var(--black) 80%, var(--black) 100%); }
+
+    /* ── MASTHEAD ── */
+    .masthead { background: #FDFAF5; border-bottom: 1px solid var(--rule); padding: 3rem 5rem 2.5rem; display: grid; grid-template-columns: 1fr auto; align-items: end; gap: 2rem; }
+    .masthead-top { border-bottom: 3px solid var(--ink); padding-bottom: 1rem; margin-bottom: 1rem; }
+    .pub-name { font-family: var(--fh); font-size: clamp(3.5rem, 10vw, 9rem); font-weight: 600; line-height: 0.9; letter-spacing: 0.01em; }
+    .pub-name .kaswari { color: var(--red); }
+    .pub-name .news    { color: var(--blue); font-style: italic; font-weight: 300; }
+    .pub-name .dot     { color: var(--yellow); }
+    .pub-sub { font-family: var(--fm); font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); margin-top: 0.8rem; }
     .masthead-right { text-align: right; }
-    .issue-count { font-family: var(--fd); font-size: 4rem; font-weight: 900; color: var(--yellow); line-height: 1; }
-    .issue-count-label { font-family: var(--fm); font-size: 0.58rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(250,250,250,0.3); }
-    .issue-sources { font-family: var(--fm); font-size: 0.58rem; color: rgba(250,250,250,0.25); margin-top: 0.6rem; line-height: 1.9; }
+    .issue-count { font-family: var(--fh); font-size: 3.5rem; font-weight: 600; color: var(--brown); line-height: 1; }
+    .issue-count-label { font-family: var(--fm); font-size: 0.55rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); }
+    .issue-sources { font-family: var(--fm); font-size: 0.55rem; color: var(--muted); margin-top: 0.5rem; line-height: 1.9; }
 
-    .section-nav {
-      background: #000; border-bottom: 1px solid #1a1a1a;
-      padding: 0 5rem; display: flex;
-      position: sticky; top: 0; z-index: 100;
-    }
-    .nav-item {
-      font-family: var(--fd); font-size: 1.05rem; font-weight: 700;
-      padding: 0.9rem 2rem; color: rgba(250,250,250,0.3);
-      border-bottom: 3px solid transparent; transition: all 0.15s;
-    }
-    .nav-item:hover { color: var(--pearl); }
-    .nav-move:hover { color: var(--yellow); border-color: var(--red); }
-    .nav-eat:hover  { color: var(--pearl); border-color: var(--blue); }
-    .nav-sleep:hover{ color: var(--pearl); border-color: var(--yellow); }
+    /* ── NAV ── */
+    .section-nav { background: #FDFAF5; border-bottom: 1px solid var(--rule); padding: 0 5rem; display: flex; position: sticky; top: 0; z-index: 100; box-shadow: 0 1px 12px rgba(0,0,0,0.04); }
+    .nav-item { font-family: var(--fs); font-size: 1rem; font-weight: 600; letter-spacing: 0.08em; padding: 0.85rem 2rem; color: var(--muted); border-bottom: 2px solid transparent; transition: all 0.15s; }
+    .nav-item:hover { color: var(--ink); }
+    .nav-move:hover { color: var(--red);   border-color: var(--red);   }
+    .nav-eat:hover  { color: var(--blue);  border-color: var(--blue);  }
+    .nav-sleep:hover{ color: var(--brown); border-color: var(--brown); }
 
+    /* ── SECTION ── */
     .mag-section { padding: 5rem 5rem 6rem; }
-    .section-header { margin-bottom: 3.5rem; }
-    .section-eyebrow { font-family: var(--fm); font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; opacity: 0.6; margin-bottom: 0.5rem; }
-    .section-title { font-family: var(--fd); font-size: clamp(5rem, 13vw, 12rem); font-weight: 900; line-height: 0.85; letter-spacing: -0.02em; margin-bottom: 1.2rem; }
-    .section-tagline { font-family: var(--fb); font-size: 1rem; font-weight: 300; font-style: italic; opacity: 0.55; max-width: 480px; }
-    .section-rule { width: 48px; height: 3px; margin-top: 1.8rem; }
+    .section-header { margin-bottom: 3rem; }
+    .section-eyebrow { font-family: var(--fm); font-size: 0.58rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.6rem; }
+    .section-title { font-family: var(--fh); font-size: clamp(4.5rem, 12vw, 11rem); font-weight: 600; font-style: italic; line-height: 0.88; letter-spacing: 0.01em; margin-bottom: 1.2rem; }
+    .section-tagline { font-family: var(--fs); font-size: 1.05rem; font-weight: 300; font-style: italic; color: var(--muted); max-width: 500px; line-height: 1.6; }
+    .section-rule { width: 40px; height: 2px; margin-top: 1.6rem; opacity: 0.6; }
 
-    .section-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 3px; }
+    /* ── CARD GRID ── */
+    .section-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 1px; border: 1px solid var(--rule); background: var(--rule); }
+    .story-card { padding: 1.8rem; display: flex; gap: 1.2rem; border: none; transition: background 0.15s; position: relative; }
+    .story-card:hover { background: #FFFEF9 !important; }
+    .story-card::before { content: ''; position: absolute; top: 0; left: 0; bottom: 0; width: 3px; opacity: 0; transition: opacity 0.15s; }
+    .story-card:hover::before { opacity: 1; }
 
-    .story-card {
-      padding: 1.8rem; display: flex; gap: 1.2rem;
-      border: 1px solid; transition: opacity 0.15s, transform 0.15s;
-    }
-    .story-card:hover { opacity: 0.82; transform: translateY(-1px); }
-    .card-hero    { grid-column: span 7; min-height: 230px; }
-    .card-wide    { grid-column: span 5; min-height: 230px; }
+    .card-hero    { grid-column: span 7; min-height: 220px; }
+    .card-wide    { grid-column: span 5; min-height: 220px; }
     .card-compact { grid-column: span 4; }
     .card-accent  { grid-column: span 5; }
     .card-minimal { grid-column: span 3; }
 
-    .card-numeral {
-      font-family: var(--fd); font-size: 3.5rem; font-weight: 900;
-      line-height: 1; opacity: 0.15; flex-shrink: 0; user-select: none; transition: opacity 0.15s;
-    }
-    .story-card:hover .card-numeral { opacity: 0.4; }
-    .card-hero .card-numeral { font-size: 5.5rem; }
+    .card-numeral { font-family: var(--fh); font-size: 3.2rem; font-weight: 300; font-style: italic; line-height: 1; opacity: 0.1; flex-shrink: 0; user-select: none; transition: opacity 0.15s; }
+    .story-card:hover .card-numeral { opacity: 0.22; }
+    .card-hero .card-numeral { font-size: 5rem; }
 
-    .card-body { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 0.6rem; }
+    .card-body { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 0.55rem; }
     .card-meta { display: flex; align-items: center; gap: 0.55rem; flex-wrap: wrap; }
 
-    .source-tag, .flag-badge, .au-badge {
-      font-family: var(--fm); font-size: 0.55rem; letter-spacing: 0.1em;
-      text-transform: uppercase; padding: 0.18em 0.55em; border-radius: 2px;
-    }
-    .source-tag { border: 1px solid; }
-    .flag-badge { background: var(--yellow); color: #000; }
+    .source-tag, .flag-badge, .au-badge { font-family: var(--fm); font-size: 0.52rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.15em 0.5em; border-radius: 2px; }
+    .source-tag { border: 1px solid; background: transparent; }
+    .flag-badge { background: var(--yellow); color: var(--black); }
     .au-badge   { background: var(--blue);   color: #fff; }
-    .card-score { font-family: var(--fm); font-size: 0.58rem; opacity: 0.35; margin-left: auto; }
+    .card-score { font-family: var(--fm); font-size: 0.55rem; color: var(--muted); margin-left: auto; }
 
-    .card-title { font-family: var(--fd); font-size: 1rem; font-weight: 700; line-height: 1.3; flex: 1; }
-    .card-hero .card-title { font-size: 1.3rem; }
+    .card-title { font-family: var(--fs); font-size: 1rem; font-weight: 600; line-height: 1.35; flex: 1; }
+    .card-hero .card-title { font-size: 1.25rem; }
+    .card-title a { transition: color 0.15s; }
     .card-title a:hover { opacity: 0.65; }
-    .card-footer { font-family: var(--fm); font-size: 0.56rem; opacity: 0.35; margin-top: auto; }
+    .card-footer { font-family: var(--fm); font-size: 0.54rem; color: var(--muted); margin-top: auto; }
 
-    .section-divider { height: 5px; background: linear-gradient(90deg, var(--yellow), var(--red), var(--blue), var(--brown)); }
+    /* ── DIVIDERS — thin rule + colour dots ── */
+    .section-divider { display: flex; align-items: center; gap: 0.75rem; padding: 2rem 5rem; }
+    .section-divider::before, .section-divider::after { content: ''; flex: 1; height: 1px; background: var(--rule); }
+    .divider-dots { display: flex; gap: 5px; }
+    .divider-dots span { width: 7px; height: 7px; border-radius: 50%; display: block; }
 
-    .mag-footer {
-      background: #000; border-top: 5px solid var(--yellow);
-      padding: 3rem 5rem; display: flex; justify-content: space-between;
-      align-items: center; flex-wrap: wrap; gap: 1.5rem;
-    }
-    .footer-brand { font-family: var(--fd); font-size: 2rem; font-weight: 900; color: var(--pearl); }
-    .footer-brand em { font-style: italic; font-weight: 400; color: var(--yellow); }
-    .footer-meta { font-family: var(--fm); font-size: 0.58rem; letter-spacing: 0.1em; color: rgba(250,250,250,0.25); text-align: right; line-height: 2; }
+    /* ── FOOTER ── */
+    .mag-footer { background: #FDFAF5; border-top: 3px solid var(--ink); padding: 2.5rem 5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.5rem; margin-top: 4rem; }
+    .footer-brand { font-family: var(--fh); font-size: 1.8rem; font-weight: 600; }
+    .footer-brand .kaswari { color: var(--red); }
+    .footer-brand .news    { color: var(--blue); font-style: italic; font-weight: 300; }
+    .footer-brand .dot     { color: var(--yellow); }
+    .footer-meta { font-family: var(--fm); font-size: 0.55rem; letter-spacing: 0.1em; color: var(--muted); text-align: right; line-height: 2; }
 
     @media (max-width: 860px) {
       .masthead, .mag-section, .mag-footer { padding: 2rem 1.5rem; }
       .masthead { grid-template-columns: 1fr; }
       .section-nav { padding: 0 1rem; }
-      .section-grid { grid-template-columns: 1fr; }
-      .story-card { grid-column: span 1 !important; }
+      .section-divider { padding: 1.5rem; }
+      .section-grid { grid-template-columns: 1fr; background: transparent; border: 1px solid var(--rule); gap: 0; }
+      .story-card { grid-column: span 1 !important; border-bottom: 1px solid var(--rule); }
       .mag-footer { flex-direction: column; }
       .footer-meta { text-align: left; }
     }
@@ -494,9 +492,15 @@ function renderHTML(sections) {
 </head>
 <body>
 
+<div class="colour-bar"></div>
+
 <header class="masthead">
   <div>
-    <div class="pub-name">Morning<em>.</em></div>
+    <div class="masthead-top">
+      <div class="pub-name">
+        <span class="kaswari">Kaswari</span> <span class="news">News</span><span class="dot">.</span>
+      </div>
+    </div>
     <div class="pub-sub">HN · Reddit · Substack · Curated Daily · ${DISPLAY_DATE}</div>
   </div>
   <div class="masthead-right">
@@ -517,13 +521,31 @@ function renderHTML(sections) {
 </nav>
 
 ${renderSection("MOVE", sections.MOVE)}
-<div class="section-divider"></div>
-${renderSection("EAT",  sections.EAT)}
-<div class="section-divider"></div>
+<div class="section-divider">
+  <div class="divider-dots">
+    <span style="background:var(--red)"></span>
+    <span style="background:var(--yellow)"></span>
+    <span style="background:var(--blue)"></span>
+    <span style="background:var(--brown)"></span>
+    <span style="background:var(--black)"></span>
+  </div>
+</div>
+${renderSection("EAT", sections.EAT)}
+<div class="section-divider">
+  <div class="divider-dots">
+    <span style="background:var(--blue)"></span>
+    <span style="background:var(--yellow)"></span>
+    <span style="background:var(--red)"></span>
+    <span style="background:var(--brown)"></span>
+    <span style="background:var(--black)"></span>
+  </div>
+</div>
 ${renderSection("SLEEP", sections.SLEEP)}
 
 <footer class="mag-footer">
-  <div class="footer-brand">Morning<em>.</em></div>
+  <div class="footer-brand">
+    <span class="kaswari">Kaswari</span> <span class="news">News</span><span class="dot">.</span>
+  </div>
   <div class="footer-meta">
     Generated by Claude · ${DATE}<br>
     HN + r/${SUBREDDITS.join(", r/")}
@@ -533,6 +555,7 @@ ${renderSection("SLEEP", sections.SLEEP)}
 </body>
 </html>`;
 }
+
 
 // ─── MAIN ─────────────────────────────────────────────────────────────────────
 async function main() {
