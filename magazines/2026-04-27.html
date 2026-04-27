@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Kaswari News · 2026-04-27</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,600;1,300;1,600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --blue:   #417DC1;
+      --red:    #990000;
+      --yellow: #FFC72C;
+      --brown:  #713907;
+      --black:  #000000;
+      --pearl:  #FAFAFA;
+      --ink:    #1C1008;
+      --muted:  #8A7F74;
+      --rule:   #E2DAD0;
+      --fh: 'La Orleans', 'Cormorant Garamond', 'Palatino Linotype', Georgia, serif;
+      --fs: 'Bellerose', 'EB Garamond', 'Palatino', Georgia, serif;
+      --fb: 'EB Garamond', 'Garamond', Georgia, serif;
+      --fm: 'DM Mono', 'Courier New', monospace;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: #FDFAF5; color: var(--ink); font-family: var(--fb); font-size: 17px; line-height: 1.7; -webkit-font-smoothing: antialiased; }
+    a { text-decoration: none; }
+
+    /* ── COLOUR BAR — all 5 hex colours ── */
+    .colour-bar { height: 4px; background: linear-gradient(90deg, var(--blue) 0%, var(--blue) 20%, var(--red) 20%, var(--red) 40%, var(--yellow) 40%, var(--yellow) 60%, var(--brown) 60%, var(--brown) 80%, var(--black) 80%, var(--black) 100%); }
+
+    /* ── MASTHEAD ── */
+    .masthead { background: #FDFAF5; border-bottom: 1px solid var(--rule); padding: 3rem 5rem 2.5rem; display: grid; grid-template-columns: 1fr auto; align-items: end; gap: 2rem; }
+    .masthead-top { border-bottom: 3px solid var(--ink); padding-bottom: 1rem; margin-bottom: 1rem; }
+    .pub-name { font-family: var(--fh); font-size: clamp(3.5rem, 10vw, 9rem); font-weight: 600; line-height: 0.9; letter-spacing: 0.01em; }
+    .pub-name .kaswari { color: var(--red); }
+    .pub-name .news    { color: var(--blue); font-style: italic; font-weight: 300; }
+    .pub-name .dot     { color: var(--yellow); }
+    .pub-sub { font-family: var(--fm); font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); margin-top: 0.8rem; }
+    .masthead-right { text-align: right; }
+    .issue-count { font-family: var(--fh); font-size: 3.5rem; font-weight: 600; color: var(--brown); line-height: 1; }
+    .issue-count-label { font-family: var(--fm); font-size: 0.55rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); }
+    .issue-sources { font-family: var(--fm); font-size: 0.55rem; color: var(--muted); margin-top: 0.5rem; line-height: 1.9; }
+
+    /* ── NAV ── */
+    .section-nav { background: #FDFAF5; border-bottom: 1px solid var(--rule); padding: 0 5rem; display: flex; position: sticky; top: 0; z-index: 100; box-shadow: 0 1px 12px rgba(0,0,0,0.04); }
+    .nav-item { font-family: var(--fs); font-size: 1rem; font-weight: 600; letter-spacing: 0.08em; padding: 0.85rem 2rem; color: var(--muted); border-bottom: 2px solid transparent; transition: all 0.15s; }
+    .nav-item:hover { color: var(--ink); }
+    .nav-move:hover { color: var(--red);   border-color: var(--red);   }
+    .nav-eat:hover  { color: var(--blue);  border-color: var(--blue);  }
+    .nav-sleep:hover{ color: var(--brown); border-color: var(--brown); }
+
+    /* ── SECTION ── */
+    .mag-section { padding: 5rem 5rem 6rem; }
+    .section-header { margin-bottom: 3rem; }
+    .section-eyebrow { font-family: var(--fm); font-size: 0.58rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.6rem; }
+    .section-title { font-family: var(--fh); font-size: clamp(4.5rem, 12vw, 11rem); font-weight: 600; font-style: italic; line-height: 0.88; letter-spacing: 0.01em; margin-bottom: 1.2rem; }
+    .section-tagline { font-family: var(--fs); font-size: 1.05rem; font-weight: 300; font-style: italic; color: var(--muted); max-width: 500px; line-height: 1.6; }
+    .section-rule { width: 40px; height: 2px; margin-top: 1.6rem; opacity: 0.6; }
+
+    /* ── CARD GRID ── */
+    .section-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 1px; border: 1px solid var(--rule); background: var(--rule); }
+    .story-card { padding: 1.8rem; display: flex; gap: 1.2rem; border: none; transition: background 0.15s; position: relative; }
+    .story-card:hover { background: #FFFEF9 !important; }
+    .story-card::before { content: ''; position: absolute; top: 0; left: 0; bottom: 0; width: 3px; opacity: 0; transition: opacity 0.15s; }
+    .story-card:hover::before { opacity: 1; }
+
+    .card-hero    { grid-column: span 7; min-height: 220px; }
+    .card-wide    { grid-column: span 5; min-height: 220px; }
+    .card-compact { grid-column: span 4; }
+    .card-accent  { grid-column: span 5; }
+    .card-minimal { grid-column: span 3; }
+
+    .card-numeral { font-family: var(--fh); font-size: 3.2rem; font-weight: 300; font-style: italic; line-height: 1; opacity: 0.1; flex-shrink: 0; user-select: none; transition: opacity 0.15s; }
+    .story-card:hover .card-numeral { opacity: 0.22; }
+    .card-hero .card-numeral { font-size: 5rem; }
+
+    .card-body { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 0.55rem; }
+    .card-meta { display: flex; align-items: center; gap: 0.55rem; flex-wrap: wrap; }
+
+    .source-tag, .flag-badge, .au-badge { font-family: var(--fm); font-size: 0.52rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.15em 0.5em; border-radius: 2px; }
+    .source-tag { border: 1px solid; background: transparent; }
+    .flag-badge { background: var(--yellow); color: var(--black); }
+    .au-badge   { background: var(--blue);   color: #fff; }
+    .card-score { font-family: var(--fm); font-size: 0.55rem; color: var(--muted); margin-left: auto; }
+
+    .card-title { font-family: var(--fs); font-size: 1rem; font-weight: 600; line-height: 1.35; flex: 1; }
+    .card-hero .card-title { font-size: 1.25rem; }
+    .card-title a { transition: color 0.15s; }
+    .card-title a:hover { opacity: 0.65; }
+    .card-footer { font-family: var(--fm); font-size: 0.54rem; color: var(--muted); margin-top: auto; }
+
+    /* ── DIVIDERS — thin rule + colour dots ── */
+    .section-divider { display: flex; align-items: center; gap: 0.75rem; padding: 2rem 5rem; }
+    .section-divider::before, .section-divider::after { content: ''; flex: 1; height: 1px; background: var(--rule); }
+    .divider-dots { display: flex; gap: 5px; }
+    .divider-dots span { width: 7px; height: 7px; border-radius: 50%; display: block; }
+
+    /* ── FOOTER ── */
+    .mag-footer { background: #FDFAF5; border-top: 3px solid var(--ink); padding: 2.5rem 5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.5rem; margin-top: 4rem; }
+    .footer-brand { font-family: var(--fh); font-size: 1.8rem; font-weight: 600; }
+    .footer-brand .kaswari { color: var(--red); }
+    .footer-brand .news    { color: var(--blue); font-style: italic; font-weight: 300; }
+    .footer-brand .dot     { color: var(--yellow); }
+    .footer-meta { font-family: var(--fm); font-size: 0.55rem; letter-spacing: 0.1em; color: var(--muted); text-align: right; line-height: 2; }
+
+    @media (max-width: 860px) {
+      .masthead, .mag-section, .mag-footer { padding: 2rem 1.5rem; }
+      .masthead { grid-template-columns: 1fr; }
+      .section-nav { padding: 0 1rem; }
+      .section-divider { padding: 1.5rem; }
+      .section-grid { grid-template-columns: 1fr; background: transparent; border: 1px solid var(--rule); gap: 0; }
+      .story-card { grid-column: span 1 !important; border-bottom: 1px solid var(--rule); }
+      .mag-footer { flex-direction: column; }
+      .footer-meta { text-align: left; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="colour-bar"></div>
+
+<header class="masthead">
+  <div>
+    <div class="masthead-top">
+      <div class="pub-name">
+        <span class="kaswari">Kaswari</span> <span class="news">News</span><span class="dot">.</span>
+      </div>
+    </div>
+    <div class="pub-sub">HN · Reddit · Substack · Curated Daily · Monday 27 April 2026</div>
+  </div>
+  <div class="masthead-right">
+    <div class="issue-count">41</div>
+    <div class="issue-count-label">Stories Today</div>
+    <div class="issue-sources">
+      Hacker News · 10 Subreddits<br>
+      16 Substack Writers<br>
+      Max 25% US · 🇦🇺 AU Boosted
+    </div>
+  </div>
+</header>
+
+<nav class="section-nav">
+  <a href="#section-MOVE"  class="nav-item nav-move">MOVE</a>
+  <a href="#section-EAT"   class="nav-item nav-eat">EAT</a>
+  <a href="#section-SLEEP" class="nav-item nav-sleep">SLEEP</a>
+</nav>
+
+
+<section class="mag-section" id="section-MOVE" style="background:#FFFDF7">
+  <header class="section-header">
+    <div class="section-eyebrow" style="color:#990000">Monday 27 April 2026</div>
+    <h2 class="section-title" style="color:#990000">MOVE</h2>
+    <p class="section-tagline" style="color:#1C1008">What's shifting. What's launching. What demands attention.</p>
+    <div class="section-rule" style="background:#990000"></div>
+  </header>
+  <div class="section-grid">
+    
+  <article class="story-card card-hero" style="background:#FFFFFF;border-color:#EDE8DF">
+    <div class="card-numeral" style="color:#990000">01</div>
+    <div class="card-body">
+      <div class="card-meta">
+        <span class="source-tag" style="border-color:#FF4500;color:#FF4500">r/worldnews</span>
+        
+        <span class="card-score" style="color:#1C1008">19.7k</span>
+      </div>
+      <h3 class="card-title"><a href="https://www.yahoo.com/news/articles/germanys-merz-us-humiliated-iran-110825245.html" target="_blank" rel="noopener" style="color:#1C1008">Germany's Merz: US is Being 'Humiliated' by Iran, No End in Sight to Conflict</a></h3>
+      <div class="card-footer" style="color:#1C1008">861 comments</div>
+    </div>
+  </article>
+
+  <article class="story-card card-wide" style="background:#FFFFFF;border-color:#EDE8DF">
+    <div class="card-numeral" style="color:#990000">02</div>
+    <div class="card-body">
+      <div class="card-meta">
+        <span class="source-tag" style="border-color:#FF4500;color:#FF4500">r/worldnews</span>
+        
+        <span class="card-score" style="color:#1C1008">16.5k</span>
+      </div>
+      <h3 class="card-title"><a href="https://www.reuters.com/world/europe/pope-leo-signals-shift-away-catholic-churchs-focus-sex-2026-04-27/" target="_blank" rel="noopener" style="color:#1C1008">Pope Leo signals shift away from Catholic Church's focus on sex</a></h3>
+      <div class="card-footer" style="color:#1C1008">1156 comments</div>
+    </div>
+  </article>
+
+  <article class="story-card card-compact" style="background:#FFFFFF;border-color:#EDE8DF">
+    <div class="card-numeral" style="color:#990000">03</div>
+    <div class="card-body">
+      <div class="card-meta">
+        <span class="source-tag" style="border-color:#FF4500;color:#FF4500">r/politics</span>
+        
+        <span class="card-score" style="color:#1C1008">16.0k</span>
+      </div>
+      <h3 class="card-title"><a href="https://inews.co.uk/news/world/trumps-blow-paedophile-accusation-greatest-weakness-4382179" target="_blank" rel="noopener" style="color:#1C1008">Trump angrily denying he is a paedophile reveals his greatest weakness</a></h3>
+      <div class="card-footer" style="color:#1C1008">670 comments</div>
+    </div>
+  </article>
+
+  <article class="story-card card-accent" style="background:#FFFFFF;border-color:#EDE8DF">
+    <div class="card-numeral" style="color:#990000">04</div>
+    <div class="card-body">
+      <div class="card-meta">
+        <span class="source-tag" style="border-color:#FF4500;color:#FF4500">r/politics</span>
+        
+        <span class="card-score" style="color:#1C1008">9.6k</span>
+      </div>
+      <h3 class="card-title"><a href="https://thehill.com/homenews/house/5849707-democrats-decline-trump-impeachment/" target="_blank" rel="noopener" style="color:#1C1008">Jeffries says Trump impeachment not a top priority if Dems win House majority</a></h3>
+      <div class="card-footer" style="color:#1C1008">2640 comments</div>
+    </div>
+  </article>
+
+  <article class="story-card card-minimal" style="background:#FFFFFF;border-color:#EDE8DF">
+    <div class="card-numeral" style="color:#990000">05</div>
+    <div class="card-body">
+      <div class="card-meta">
+        <span class="source-tag" style="border-color:#FF4500;color:#FF4500">r/worldnews</span>
+        
+        <span class="card-score" style="color:#1C1008">7.1k</span>
+      </div>
+      <h3 class="card-title"><a href="https://www.cbc.ca/news/politics/sovereign-wealth-fund-carney-major-projects-9.7178238" target="_blank" rel="noopener" style="color:#1C1008">Carney announces creation of Canada's first sovereign wealth fund</a></h3>
+      <div class="card-footer" style="color:#1C1008">584 comments</div>
+    </div>
+  </article>
+
+  <article class="story-card card-hero" style="background:#FFFFFF;border-color:#EDE8DF">
+    <div class="card-numeral" style="color:#990000">06</div>
+    <div class="card-body">
+      <div class="card-meta">
+        <span class="source-tag" style="border-color:#FF4500;color:#FF4500">r/politics</span>
+        
+        <span class="card-score" style="color:#1C1008">6.8k</span>
+      </div>
+      <h3 class="card-title"><a href="https://www.thedailybeast.com/i-get-why-people-call-the-white-house-correspondents-dinner-shooting-staged-i-was-there/" target="_blank" rel="noopener" style="color:#1C1008">I Get Why People Call the White House Correspondents’ Dinner Shooting Staged. I Was There</a></h3>
+      <div class="card-footer" style="color:#1C1008">511 comments</div>
+    </div>
+  </article>
+
+  <article class="story-card card-wide" style="background:#FFFFFF;border-color:#EDE8DF">
+    <div class="card-numeral" style="color:#990000">07</div>
+    <div class="card-body">
+      <div class="card-meta">
+        <span class="source-tag" style="border-color:#FF4500;color:#FF4500">r/politics</span>
+        
+        <span class="card-score" style="color:#1C1008">6.2k</span>
+      </div>
+      <h3 class="card-title"><a href="https://prospect.org/2026/04/24/congress-has-become-almost-totally-irrelevant/" target="_blank" rel="noopener" style="color:#1C1008">Congress Has Become Almost Totally Irrelevant</a></h3>
+      <div class="card-footer" style="color:#1C1008">228 comments</div>
+    </div>
+  </article>
+
+  <article class="story-card card-compact" style="background:#FFFFFF;border-color:#EDE8DF">
+    <div class="card-numeral" style="color:#990000">08</div>
+    <div class="card-body">
+      <div class="card-meta">
+        <span class="source-tag" style="border-color:#FF4500;color:#FF4500">r/worldnews</span>
+        
+        <span class="card-score" style="color:#1C1008">5.7k</span>
+      </div>
+      <h3 class="card-title"><a href="https://united24media.com/latest-news/ukraine-threatens-israel-with-diplomatic-fallout-over-suspected-stolen-grain-shipment-18261" target="_blank" rel="noopener" style="color:#1C1008">Ukraine Threatens Israel With Diplomatic Fallout Over Suspected Stolen Grain Shipment</a></h3>
+      <div class="card-footer" style="color:#1C1008">153 comments</div>
+    </div>
+  </article>
+
+  <article class="story-card card-accent" style="background:#FFFFFF;border-color:#EDE8DF">
+    <div class="card-numeral" style="color:#990000">09</div>
+    <div class="card-body">
+      <div class="card-meta">
+        <span class="source-tag" style="border-color:#FF4500;color:#FF4500">r/worldnews</span>
+        
+        <span class="card-score" style="color:#1C1008">4.6k</span>
+      </div>
+      <h3 class="card-title"><a href="https://www.lbc.co.uk/article/falkland-islands-england-argentina-trump-nato-5HjdYKY_2/" target="_blank" rel="noopener" style="color:#1C1008">Falklanders should 'go back' to England, insists Argentina in renewed war of words</a></h3>
+      <div class="card-footer" style="color:#1C1008">922 comments</div>
+    </div>
+  </article>
+
+  <article class="story-card card-minimal" style="background:#FFFFFF;border-color:#EDE8DF">
+    <div class="card-numeral" style="color:#990000">10</div>
+    <div class="card-body">
+      <div class="card-meta">
+        <span class="source-tag" style="border-color:#FF4500;color:#FF4500">r/worldnews</span>
+        
+        <span class="card-score" style="color:#1C1008">3.9k</span>
+      </div>
+      <h3 class="card-title"><a href="https://fortune.com/2026/04/25/russia-economy-reserves-labor-shortage-inflation-gdp-financial-crisis-revolution/" target="_blank" rel="noopener" style="color:#1C1008">Russia's economy minister admits "reserves have largely been used up"</a></h3>
+      <div class="card-footer" style="color:#1C1008">152 comments</div>
+    </div>
+  </article>
+
+  <article class="story-card card-hero" style="background:#FFFFFF;border-color:#EDE8DF">
+    <div class="card-numeral" style="color:#990000">11</div>
+    <div class="card-body">
+      <div class="card-meta">
+        <span class="source-tag" style="border-color:#FF4500;color:#FF4500">r/politics</span>
+        
+        <span class="card-score" style="color:#1C1008">2.1k</span>
+      </div>
+      <h3 class="card-title"><a href="https://newrepublic.com/post/209562/donald-trump-immigration-judge-women-warm-wet-hole" target="_blank" rel="noopener" style="color:#1C1008">Trump Judge Says Some Women Are Just a “Warm, Wet Hole”</a></h3>
+      <div class="card-footer" style="color:#1C1008">208 comments</div>
+    </div>
+  </article>
+
+  <article class="story-card card-wide" style="background:#FFFFFF;border-color:#EDE8DF">
+    <div class="card-numeral" style="color:#990000">12</div>
+    <div class="card-body">
+      <div class="card-meta">
+        <span class="source-tag" style="border-color:#713907;color:#713907">Hacker News</span>
+        
+        <span class="card-score" style="color:#1C1008">810</span>
+      </div>
+      <h3 class="card-title"><a href="https://www.koshyjohn.com/blog/ai-should-elevate-your-thinking-not-replace-it/" target="_blank" rel="noopener" style="color:#1C1008">AI should elevate your thinking, not replace it</a></h3>
+      <div class="card-footer" style="color:#1C1008">566 comments</div>
+    </div>
+  </article>
+
+  <article class="story-card card-compact" style="background:#FFFFFF;border-color:#EDE8DF">
+    <div class="card-numeral" style="color:#990000">13</div>
+    <div class="card-body">
+      <div class="card-meta">
+        <span class="source-tag" style="border-color:#713907;color:#713907">Hacker News</span>
+        
+        <span class="card-score" style="color:#1C1008">712</span>
+      </div>
+      <h3 class="card-title"><a href="https://www.bloomberg.com/news/articles/2026-04-27/microsoft-to-stop-sharing-revenue-with-main-ai-partner-openai" target="_blank" rel="noopener" style="color:#1C1008">Microsoft and OpenAI end their exclusive and revenue-sharing deal</a></h3>
+      <div class="card-footer" style="color:#1C1008">635 comments</div>
+    </div>
+  </article>
+
+  <article class="story-card card-accent" style="background:#FFFFFF;border-color:#EDE8DF">
+    <div class="card-numeral" style="color:#990000">14</div>
+    <div class="card-body">
+      <div class="card-meta">
+        <span class="source-tag" style="border-color:#FF4500;color:#FF4500">r/gadgets</span>
+        
+        <span class="card-score" style="color:#1C1008">594</span>
+      </div>
+      <h3 class="card-title"><a href="https://www.notebookcheck.net/New-flagship-OnePlus-phone-doubles-down-on-battery-and-lag-free-gaming.1282920.0.html" target="_blank" rel="noopener" style="color:#1C1008">New flagship OnePlus phone doubles down on battery and lag-free gaming</a></h3>
+      <div class="card-footer" style="color:#1C1008">94 comments</div>
+    </div>
+  </article>
+  </div>
+</section>
+<div class="section-divider">
+  <div class="divider-dots">
+    <span style="background:var(--red)"></span>
+    <span style="background:var(--yellow)"></span>
+    <span style="background:var(--blue)"></span>
+    <span style="background:var(--brown)"></span>
+    <span style="background:var(--black)"></span>
+  </div>
+</div>
+
+<section class="mag-section" id="section-EAT" style="background:#F7F9FC">
+  <header class="section-header">
+    <div class="section-eyebrow" style="color:#417DC1">Monday 27 April 2026</div>
+    <h2 class="section-title" style="color:#417DC1">EAT</h2>
+    <p class="section-tagline" style="color:#0D1A2B">Ideas worth ingesting. Tools, recipes, research, and deep reads.</p>
+    <div class="section-rule" style="background:#417DC1"></div>
+  </header>
+  <div class="section-grid">
+    
+  <article class="story-card card-hero" style="background:#FFFFFF;border-color:#DDE6F0">
+    <div class="card-numeral" style="color:#417DC1">01</div>
+    <div class="card-body">
+      <div class="card-meta">
+        <span class="source-tag" style="border-color:#FF4500;color:#FF4500">r/technology</span>
+        <span class="flag-badge">★ WATCH</span>
+        <span class="card-score" style="color:#0D1A2B">23.4k</span>
+      </div>
+      <h3 class="card-title"><a href="https://www.tomshardware.com/tech-industry/artificial-intelligence/claude-powered-ai-coding-agent-deletes-entire-company-database-in-9-seconds-backups-zapped-after-cursor-tool-powered-by-anthropics-claude-goes-rogue" target="_blank" rel="noopener" style="color:#0D1A2B">Claude-powered AI coding agent deletes entire company database in 9 seconds — backups zapped, after Cursor tool powered by Anthropic's Claude goes rogue</a></h3>
+      <div class="card-footer" style="color:#0D1A2B">1989 comments</div>
+    </div>
+  </article>
+
+  <article class="story-card card-wide" style="background:#FFFFFF;border-color:#DDE6F0">
+    <div class="card-numeral" style="color:#417DC1">02</div>
+    <div class="card-body">
+      <div class="card-meta">
+        <span class="source-tag" style="border-color:#FF4500;color:#FF4500">r/technology</span>
+        
+        <span class="card-score" style="color:#0D1A2B">13.2k</span>
+      </div>
+      <h3 class="card-title"><a href="https://www.axios.com/2026/04/26/ai-cost-human-workers" target="_blank" rel="noopener" style="color:#0D1A2B">AI can cost more than human workers now</a></h3>
+      <div class="card-footer" style="color:#0D1A2B">779 comments</div>
+    </div>
+  </article>
+
+  <article class="story-card card-compact" style="background:#FFFFFF;border-color:#DDE6F0">
+    <div class="card-numeral" style="color:#417DC1">03</div>
+    <div class="card-body">
+      <div class="card-meta">
+        <span class="source-tag" style="border-color:#FF4500;color:#FF4500">r/science</span>
+        
+        <span class="card-score" style="color:#0D1A2B">2.3k</span>
+      </div>
+      <h3 class="card-title"><a href="https://www.eurekalert.org/news-releases/1124903" target="_blank" rel="noopener" style="color:#0D1A2B">The second Trump administration has been more aggressive in anti-immigrant policies. Anti-sanctuary policies can negatively impact immigrants’ health. However, sanctuary jurisdictions are associated with having less crime and poverty, higher employment and income, and improved community trust.</a></h3>
+      <div class="card-footer" style="color:#0D1A2B">114 comments</div>
+    </div>
+  </article>
+
+  <article class="story-card card-accent" style="background:#FFFFFF;border-color:#DDE6F0">
+    <div class="card-numeral" style="color:#417DC1">04</div>
+    <div class="card-body">
+      <div class="card-meta">
+        <span class="source-tag" style="border-color:#FF4500;color:#FF4500">r/gadgets</span>
+        
+        <span class="card-score" style="color:#0D1A2B">1.9k</span>
+      </div>
+      <h3 class="card-title"><a href="https://gizmodo.com/the-foldable-iphone-is-basically-an-ipad-mini-that-folds-in-half-2000750451" target="_blank" rel="noopener" style="color:#0D1A2B">The Foldable iPhone Is Basically an iPad Mini That Folds in Half</a></h3>
+      <div class="card-footer" style="color:#0D1A2B">456 comments</div>
+    </div>
+  </article>
+
+  <article class="story-card card-minimal" style="background:#FFFFFF;border-color:#DDE6F0">
+    <div class="card-numeral" style="color:#417DC1">05</div>
+    <div class="card-body">
+      <div class="card-meta">
+        <span class="source-tag" style="border-color:#FF4500;color:#FF4500">r/technology</span>
+        
+        <span class="card-score" style="color:#0D1A2B">1.8k</span>
+      </div>
+      <h3 class="card-title"><a href="https://www.mercurynews.com/2026/04/27/apple-google-crushed-california-bill-that-helped-smaller-rivals/" target="_blank" rel="noopener" style="color:#0D1A2B">Apple, Google crushed California bill that helped smaller rivals</a></h3>
+      <div class="card-footer" style="color:#0D1A2B">42 comments</div>
+    </div>
+  </article>
+
+  <article class="story-card card-hero" style="background:#FFFFFF;border-color:#DDE6F0">
+    <div class="card-numeral" style="color:#417DC1">06</div>
+    <div class="card-body">
+      <div class="card-meta">
+        <span class="source-tag" style="border-color:#FF4500;color:#FF4500">r/gadgets</span>
+        
+        <span class="card-score" style="color:#0D1A2B">1.7k</span>
+      </div>
+      <h3 class="card-title"><a href="https://www.pcworld.com/article/3116546/investigation-are-ram-prices-dropping-or-is-it-all-illusion.html" target="_blank" rel="noopener" style="color:#0D1A2B">Was the slight drop in RAM prices just an illusion or a great news for the average consumer?</a></h3>
+      <div class="card-footer" style="color:#0D1A2B">193 comments</div>
+    </div>
+  </article>
+
+  <article class="story-card card-wide" style="background:#FFFFFF;border-color:#DDE6F0">
+    <div class="card-numeral" style="color:#417DC1">07</div>
+    <div class="card-body">
+      <div class="card-meta">
+        <span class="source-tag" style="border-color:#FF4500;color:#FF4500">r/gadgets</span>
+        
+        <span class="card-score" style="color:#0D1A2B">1.1k</span>
+      </div>
+      <h3 class="card-title"><a href="https://www.notebookcheck.net/Steam-Controller-review-leaks-but-price-of-Steam-Machine-accessory-may-disappoint.1282968.0.html" target="_blank" rel="noopener" style="color:#0D1A2B">Steam Controller review leaks, but price of Steam Machine accessory may disappoint</a></h3>
+      <div class="card-footer" style="color:#0D1A2B">461 comments</div>
+    </div>
+  </article>
+
+  <article class="story-card card-compact" style="background:#FFFFFF;border-color:#DDE6F0">
+    <div class="card-numeral" style="color:#417DC1">08</div>
+    <div class="card-body">
+      <div class="card-meta">
+        <span class="source-tag" style="border-color:#713907;color:#713907">Hacker News</span>
+        
+        <span class="card-score" style="color:#0D1A2B">1.1k</span>
+      </div>
+      <h3 class="card-title"><a href="https://ca98am79.medium.com/i-bought-friendster-for-30k-heres-what-i-m-doing-with-it-d5e8ddb3991d" target="_blank" rel="noopener" style="color:#0D1A2B">I bought Friendster for $30k – Here's what I'm doing with it</a></h3>
+      <div class="card-footer" style="color:#0D1A2B">575 comments</div>
+    </div>
+  </article>
+
+  <article class="story-card card-accent" style="background:#FFFFFF;border-color:#DDE6F0">
+    <div class="card-numeral" style="color:#417DC1">09</div>
+    <div class="card-body">
+      <div class="card-meta">
+        <span class="source-tag" style="border-color:#FF4500;color:#FF4500">r/technology</span>
+        
+        <span class="card-score" style="color:#0D1A2B">927</span>
+      </div>
+      <h3 class="card-title"><a href="https://www.thedrive.com/news/a-receipt-saved-this-couple-from-a-7000-rental-car-damage-claim" target="_blank" rel="noopener" style="color:#0D1A2B">Enterprise Tried Pinning Bogus $7K Bill on Renters for Gas-Diesel Mixup, Finally Forced To Back Down</a></h3>
+      <div class="card-footer" style="color:#0D1A2B">49 comments</div>
+    </div>
+  </article>
+
+  <article class="story-card card-minimal" style="background:#FFFFFF;border-color:#DDE6F0">
+    <div class="card-numeral" style="color:#417DC1">10</div>
+    <div class="card-body">
+      <div class="card-meta">
+        <span class="source-tag" style="border-color:#FF4500;color:#FF4500">r/science</span>
+        
+        <span class="card-score" style="color:#0D1A2B">605</span>
+      </div>
+      <h3 class="card-title"><a href="https://news.osu.edu/we-may-be-born-with-2-complex-cognitive-functions-already-established/?utm_campaign=omc_science-medicine_fy26&amp;utm_source=reddit&amp;utm_medium=social" target="_blank" rel="noopener" style="color:#0D1A2B">A new study is the first to show that 2 of our most sophisticated cognitive functions, using and understanding language and being able to sense how other people feel, have distinct origins in the brain in young children – matching what we know about the adult brain.</a></h3>
+      <div class="card-footer" style="color:#0D1A2B">8 comments</div>
+    </div>
+  </article>
+
+  <article class="story-card card-hero" style="background:#FFFFFF;border-color:#DDE6F0">
+    <div class="card-numeral" style="color:#417DC1">11</div>
+    <div class="card-body">
+      <div class="card-meta">
+        <span class="source-tag" style="border-color:#713907;color:#713907">Hacker News</span>
+        
+        <span class="card-score" style="color:#0D1A2B">543</span>
+      </div>
+      <h3 class="card-title"><a href="https://flipdisc.io" target="_blank" rel="noopener" style="color:#0D1A2B">Flipdiscs</a></h3>
+      <div class="card-footer" style="color:#0D1A2B">86 comments</div>
+    </div>
+  </article>
+
+  <article class="story-card card-wide" style="background:#FFFFFF;border-color:#DDE6F0">
+    <div class="card-numeral" style="color:#417DC1">12</div>
+    <div class="card-body">
+      <div class="card-meta">
+        <span class="source-tag" style="border-color:#FF4500;color:#FF4500">r/science</span>
+        
+        <span class="card-score" style="color:#0D1A2B">543</span>
+      </div>
+      <h3 class="card-title"><a href="https://www.cancertherapyadvisor.com/news/political-ideology-clinical-trials/" target="_blank" rel="noopener" style="color:#0D1A2B">Research found individuals who identify as politically conservative were more likely to express skepticism about clinical trials than those with moderate or liberal ideologies. This pattern is consistent with broader polarization in trust toward scientific institutions and government health agencies</a></h3>
+      <div class="card-footer" style="color:#0D1A2B">57 comments</div>
+    </div>
+  </article>
+
+  <article class="story-card card-compact" style="background:#FFFFFF;border-color:#DDE6F0">
+    <div class="card-numeral" style="color:#417DC1">13</div>
+    <div class="card-body">
+      <div class="card-meta">
+        <span class="source-tag" style="border-color:#713907;color:#713907">Hacker News</span>
+        
+        <span class="card-score" style="color:#0D1A2B">512</span>
+      </div>
+      <h3 class="card-title"><a href="https://github.blog/news-insights/company-news/github-copilot-is-moving-to-usage-based-billing/" target="_blank" rel="noopener" style="color:#0D1A2B">GitHub Copilot is moving to usage-based billing</a></h3>
+      <div class="card-footer" style="color:#0D1A2B">392 comments</div>
+    </div>
+  </article>
+
+  <article class="story-card card-accent" style="background:#FFFFFF;border-color:#DDE6F0">
+    <div class="card-numeral" style="color:#417DC1">14</div>
+    <div class="card-body">
+      <div class="card-meta">
+        <span class="source-tag" style="border-color:#713907;color:#713907">Hacker News</span>
+        
+        <span class="card-score" style="color:#0D1A2B">501</span>
+      </div>
+      <h3 class="card-title"><a href="https://www.bbc.com/sport/athletics/articles/crm1m7e0zwzo" target="_blank" rel="noopener" style="color:#0D1A2B">Sawe becomes first athlete to run a sub-two-hour marathon in a competitive race</a></h3>
+      <div class="card-footer" style="color:#0D1A2B">330 comments</div>
+    </div>
+  </article>
+  </div>
+</section>
+<div class="section-divider">
+  <div class="divider-dots">
+    <span style="background:var(--blue)"></span>
+    <span style="background:var(--yellow)"></span>
+    <span style="background:var(--red)"></span>
+    <span style="background:var(--brown)"></span>
+    <span style="background:var(--black)"></span>
+  </div>
+</div>
+
+<section class="mag-section" id="section-SLEEP" style="background:#F9F7F4">
+  <header class="section-header">
+    <div class="section-eyebrow" style="color:#713907">Monday 27 April 2026</div>
+    <h2 class="section-title" style="color:#713907">SLEEP</h2>
+    <p class="section-tagline" style="color:#1C1008">Slow, strange, and worth sitting with.</p>
+    <div class="section-rule" style="background:#713907"></div>
+  </header>
+  <div class="section-grid">
+    
+  <article class="story-card card-hero" style="background:#FFFFFF;border-color:#E8E0D4">
+    <div class="card-numeral" style="color:#713907">01</div>
+    <div class="card-body">
+      <div class="card-meta">
+        <span class="source-tag" style="border-color:#FF4500;color:#FF4500">r/science</span>
+        
+        <span class="card-score" style="color:#1C1008">9.1k</span>
+      </div>
+      <h3 class="card-title"><a href="https://www.theguardian.com/science/2026/apr/27/spooky-feelings-in-old-houses-may-be-caused-by-boiler-sounds-study-suggests" target="_blank" rel="noopener" style="color:#1C1008">Spooky feelings in old houses may be caused by boiler sounds. Inaudible infrasound from old pipes may affect how people feel. Even though it was beyond the range of human hearing, people were more irritable and levels of cortisol, the stress hormone, rose when the sound was switched on.</a></h3>
+      <div class="card-footer" style="color:#1C1008">296 comments</div>
+    </div>
+  </article>
+
+  <article class="story-card card-wide" style="background:#FFFFFF;border-color:#E8E0D4">
+    <div class="card-numeral" style="color:#713907">02</div>
+    <div class="card-body">
+      <div class="card-meta">
+        <span class="source-tag" style="border-color:#FF4500;color:#FF4500">r/science</span>
+        
+        <span class="card-score" style="color:#1C1008">2.5k</span>
+      </div>
+      <h3 class="card-title"><a href="https://www.birmingham.ac.uk/news/2026/obesity-leaves-a-lasting-memory-in-immune-cells" target="_blank" rel="noopener" style="color:#1C1008">Obesity leaves a lasting memory in immune cells. This ‘tagging’ is likely to last between 5-10 years after people successfully lose weight. The resulting impact of the ‘memory’ of obesity in helper T cells could cause dysregulation of some usual activities that the immune system typically does</a></h3>
+      <div class="card-footer" style="color:#1C1008">52 comments</div>
+    </div>
+  </article>
+
+  <article class="story-card card-compact" style="background:#FFFFFF;border-color:#E8E0D4">
+    <div class="card-numeral" style="color:#713907">03</div>
+    <div class="card-body">
+      <div class="card-meta">
+        <span class="source-tag" style="border-color:#FF4500;color:#FF4500">r/science</span>
+        
+        <span class="card-score" style="color:#1C1008">1.5k</span>
+      </div>
+      <h3 class="card-title"><a href="https://www.psypost.org/a-reduced-sense-of-belonging-links-childhood-emotional-abuse-to-unhappier-romantic-relationships/" target="_blank" rel="noopener" style="color:#1C1008">People who experienced psychological abuse in childhood tend to experience lower relationship satisfaction as adults. This decline in romantic happiness happens because these individuals often develop a reduced sense of belonging.</a></h3>
+      <div class="card-footer" style="color:#1C1008">31 comments</div>
+    </div>
+  </article>
+
+  <article class="story-card card-accent" style="background:#FFFFFF;border-color:#E8E0D4">
+    <div class="card-numeral" style="color:#713907">04</div>
+    <div class="card-body">
+      <div class="card-meta">
+        <span class="source-tag" style="border-color:#FF4500;color:#FF4500">r/environment</span>
+        
+        <span class="card-score" style="color:#1C1008">911</span>
+      </div>
+      <h3 class="card-title"><a href="https://www.earth.com/news/seaweed-supplement-reduces-methane-emissions-in-grazing-cattle-by-up-to-77-percent/" target="_blank" rel="noopener" style="color:#1C1008">Seaweed supplement reduces methane emissions in grazing cattle by up to 77 percent</a></h3>
+      <div class="card-footer" style="color:#1C1008">43 comments</div>
+    </div>
+  </article>
+
+  <article class="story-card card-minimal" style="background:#FFFFFF;border-color:#E8E0D4">
+    <div class="card-numeral" style="color:#713907">05</div>
+    <div class="card-body">
+      <div class="card-meta">
+        <span class="source-tag" style="border-color:#FF4500;color:#FF4500">r/environment</span>
+        
+        <span class="card-score" style="color:#1C1008">741</span>
+      </div>
+      <h3 class="card-title"><a href="https://www.motherjones.com/politics/2026/04/roundup-glyphosate-spraying-forests-monsanto-science-retraction-cancer-health-concerns-maha-trump-executive-order-supreme-court-bayer-lawsuits/" target="_blank" rel="noopener" style="color:#1C1008">We Are Bombarding America’s Forests With Roundup</a></h3>
+      <div class="card-footer" style="color:#1C1008">42 comments</div>
+    </div>
+  </article>
+
+  <article class="story-card card-hero" style="background:#FFFFFF;border-color:#E8E0D4">
+    <div class="card-numeral" style="color:#713907">06</div>
+    <div class="card-body">
+      <div class="card-meta">
+        <span class="source-tag" style="border-color:#990000;color:#990000">Mike Brock</span>
+        
+        <span class="card-score" style="color:#1C1008">500</span>
+      </div>
+      <h3 class="card-title"><a href="https://www.notesfromthecircus.com/p/the-ritual" target="_blank" rel="noopener" style="color:#1C1008">The Ritual</a></h3>
+      
+    </div>
+  </article>
+
+  <article class="story-card card-wide" style="background:#FFFFFF;border-color:#E8E0D4">
+    <div class="card-numeral" style="color:#713907">07</div>
+    <div class="card-body">
+      <div class="card-meta">
+        <span class="source-tag" style="border-color:#990000;color:#990000">Mike Brock</span>
+        
+        <span class="card-score" style="color:#1C1008">500</span>
+      </div>
+      <h3 class="card-title"><a href="https://www.notesfromthecircus.com/p/the-most-articulate-apologist" target="_blank" rel="noopener" style="color:#1C1008">The Most Articulate Apologist</a></h3>
+      
+    </div>
+  </article>
+
+  <article class="story-card card-compact" style="background:#FFFFFF;border-color:#E8E0D4">
+    <div class="card-numeral" style="color:#713907">08</div>
+    <div class="card-body">
+      <div class="card-meta">
+        <span class="source-tag" style="border-color:#713907;color:#713907">The Culturist</span>
+        
+        <span class="card-score" style="color:#1C1008">500</span>
+      </div>
+      <h3 class="card-title"><a href="https://www.theculturist.io/p/book-club-recap-the-sun-also-rises-28a" target="_blank" rel="noopener" style="color:#1C1008">Book Club Recap: The Sun Also Rises</a></h3>
+      
+    </div>
+  </article>
+
+  <article class="story-card card-accent" style="background:#FFFFFF;border-color:#E8E0D4">
+    <div class="card-numeral" style="color:#713907">09</div>
+    <div class="card-body">
+      <div class="card-meta">
+        <span class="source-tag" style="border-color:#417DC1;color:#417DC1">Regen Earth Studio</span>
+        
+        <span class="card-score" style="color:#1C1008">500</span>
+      </div>
+      <h3 class="card-title"><a href="https://regenearthstudio.substack.com/p/realizing-our-collaborative-potency" target="_blank" rel="noopener" style="color:#1C1008">Realizing our Collaborative Potency in Service of Regenerative Living</a></h3>
+      
+    </div>
+  </article>
+
+  <article class="story-card card-minimal" style="background:#FFFFFF;border-color:#E8E0D4">
+    <div class="card-numeral" style="color:#713907">10</div>
+    <div class="card-body">
+      <div class="card-meta">
+        <span class="source-tag" style="border-color:#FF4500;color:#FF4500">r/environment</span>
+        
+        <span class="card-score" style="color:#1C1008">346</span>
+      </div>
+      <h3 class="card-title"><a href="https://www.bloomberg.com/news/features/2026-04-25/brazil-s-amazon-villages-welcome-24-7-power-from-solar-panels-batteries?link_source=ta_bluesky_link&amp;taid=69ecc8f5fd4ea00001a8d093&amp;utm_campaign=trueanthem&amp;utm_content=business&amp;utm_medium=social&amp;utm_source=bluesky" target="_blank" rel="noopener" style="color:#1C1008">Solar panels and batteries are spreading across the Amazon rainforest, bringing 24/7 power to off-grid communities.</a></h3>
+      <div class="card-footer" style="color:#1C1008">13 comments</div>
+    </div>
+  </article>
+
+  <article class="story-card card-hero" style="background:#FFFFFF;border-color:#E8E0D4">
+    <div class="card-numeral" style="color:#713907">11</div>
+    <div class="card-body">
+      <div class="card-meta">
+        <span class="source-tag" style="border-color:#FF4500;color:#FF4500">r/environment</span>
+        
+        <span class="card-score" style="color:#1C1008">229</span>
+      </div>
+      <h3 class="card-title"><a href="https://www.sciencedaily.com/releases/2026/04/260426012253.htm?shem=dsdf,sharefoc,agadiscoversdl,,sh/x/discover/m1/4" target="_blank" rel="noopener" style="color:#1C1008">Panama’s ocean lifeline vanishes for the first time in 40 years</a></h3>
+      <div class="card-footer" style="color:#1C1008">12 comments</div>
+    </div>
+  </article>
+
+  <article class="story-card card-wide" style="background:#FFFFFF;border-color:#E8E0D4">
+    <div class="card-numeral" style="color:#713907">12</div>
+    <div class="card-body">
+      <div class="card-meta">
+        <span class="source-tag" style="border-color:#FF4500;color:#FF4500">r/environment</span>
+        
+        <span class="card-score" style="color:#1C1008">188</span>
+      </div>
+      <h3 class="card-title"><a href="https://www.sfgate.com/la/article/california-whale-watching-22218483.php" target="_blank" rel="noopener" style="color:#1C1008">A 40-year gray whale census off California’s coast is now recording some of its lowest numbers ever</a></h3>
+      <div class="card-footer" style="color:#1C1008">2 comments</div>
+    </div>
+  </article>
+
+  <article class="story-card card-compact" style="background:#FFFFFF;border-color:#E8E0D4">
+    <div class="card-numeral" style="color:#713907">13</div>
+    <div class="card-body">
+      <div class="card-meta">
+        <span class="source-tag" style="border-color:#FF4500;color:#FF4500">r/environment</span>
+        
+        <span class="card-score" style="color:#1C1008">134</span>
+      </div>
+      <h3 class="card-title"><a href="https://www.bloomberg.com/opinion/articles/2026-04-27/world-food-supply-is-threatened-by-iran-war-heat-and-trade-shocks?accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzb3VyY2UiOiJTdWJzY3JpYmVyR2lmdGVkQXJ0aWNsZSIsImlhdCI6MTc3NzI5NDU2MCwiZXhwIjoxNzc3ODk5MzYwLCJhcnRpY2xlSWQiOiJURTVFSUtLR0lGVEYwMCIsImJjb25uZWN0SWQiOiIxMkE1QzVFRUNERDg0NUJEQjVFOTM1MUE0Mzk4QTAxNCJ9.PrCzvGRJgrrHZgjhaK5etxy7gUP62lvZbx3Uh2SkirA" target="_blank" rel="noopener" style="color:#1C1008">Tariffs, war, heat and El Niño combined will pose a quadruple threat to the world's food supply this year and next. We aren't ready for what's coming.</a></h3>
+      <div class="card-footer" style="color:#1C1008">8 comments</div>
+    </div>
+  </article>
+  </div>
+</section>
+
+<footer class="mag-footer">
+  <div class="footer-brand">
+    <span class="kaswari">Kaswari</span> <span class="news">News</span><span class="dot">.</span>
+  </div>
+  <div class="footer-meta">
+    Generated by Claude · 2026-04-27<br>
+    HN + r/technology, r/science, r/worldnews, r/business, r/environment, r/programming, r/politics, r/economics, r/gadgets, r/innovation
+  </div>
+</footer>
+
+</body>
+</html>
