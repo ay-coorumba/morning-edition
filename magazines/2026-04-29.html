@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Kaswari News · 2026-04-29</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,600;1,300;1,600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --blue:   #417DC1;
+      --red:    #990000;
+      --yellow: #FFC72C;
+      --brown:  #713907;
+      --black:  #000000;
+      --pearl:  #FAFAFA;
+      --ink:    #1C1008;
+      --muted:  #8A7F74;
+      --rule:   #E2DAD0;
+      --fh: 'La Orleans', 'Cormorant Garamond', 'Palatino Linotype', Georgia, serif;
+      --fs: 'Bellerose', 'EB Garamond', 'Palatino', Georgia, serif;
+      --fb: 'EB Garamond', 'Garamond', Georgia, serif;
+      --fm: 'DM Mono', 'Courier New', monospace;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: #FDFAF5; color: var(--ink); font-family: var(--fb); font-size: 17px; line-height: 1.7; -webkit-font-smoothing: antialiased; }
+    a { text-decoration: none; }
+
+    /* ── COLOUR BAR — all 5 hex colours ── */
+    .colour-bar { height: 4px; background: linear-gradient(90deg, var(--blue) 0%, var(--blue) 20%, var(--red) 20%, var(--red) 40%, var(--yellow) 40%, var(--yellow) 60%, var(--brown) 60%, var(--brown) 80%, var(--black) 80%, var(--black) 100%); }
+
+    /* ── MASTHEAD ── */
+    .masthead { background: #FDFAF5; border-bottom: 1px solid var(--rule); padding: 3rem 5rem 2.5rem; display: grid; grid-template-columns: 1fr auto; align-items: end; gap: 2rem; }
+    .masthead-top { border-bottom: 3px solid var(--ink); padding-bottom: 1rem; margin-bottom: 1rem; }
+    .pub-name { font-family: var(--fh); font-size: clamp(3.5rem, 10vw, 9rem); font-weight: 600; line-height: 0.9; letter-spacing: 0.01em; }
+    .pub-name .kaswari { color: var(--red); }
+    .pub-name .news    { color: var(--blue); font-style: italic; font-weight: 300; }
+    .pub-name .dot     { color: var(--yellow); }
+    .pub-sub { font-family: var(--fm); font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); margin-top: 0.8rem; }
+    .masthead-right { text-align: right; }
+    .issue-count { font-family: var(--fh); font-size: 3.5rem; font-weight: 600; color: var(--brown); line-height: 1; }
+    .issue-count-label { font-family: var(--fm); font-size: 0.55rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); }
+    .issue-sources { font-family: var(--fm); font-size: 0.55rem; color: var(--muted); margin-top: 0.5rem; line-height: 1.9; }
+
+    /* ── NAV ── */
+    .section-nav { background: #FDFAF5; border-bottom: 1px solid var(--rule); padding: 0 5rem; display: flex; position: sticky; top: 0; z-index: 100; box-shadow: 0 1px 12px rgba(0,0,0,0.04); }
+    .nav-item { font-family: var(--fs); font-size: 1rem; font-weight: 600; letter-spacing: 0.08em; padding: 0.85rem 2rem; color: var(--muted); border-bottom: 2px solid transparent; transition: all 0.15s; }
+    .nav-item:hover { color: var(--ink); }
+    .nav-move:hover { color: var(--red);   border-color: var(--red);   }
+    .nav-eat:hover  { color: var(--blue);  border-color: var(--blue);  }
+    .nav-sleep:hover{ color: var(--brown); border-color: var(--brown); }
+
+    /* ── SECTION ── */
+    .mag-section { padding: 5rem 5rem 6rem; }
+    .section-header { margin-bottom: 3rem; }
+    .section-eyebrow { font-family: var(--fm); font-size: 0.58rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.6rem; }
+    .section-title { font-family: var(--fh); font-size: clamp(4.5rem, 12vw, 11rem); font-weight: 600; font-style: italic; line-height: 0.88; letter-spacing: 0.01em; margin-bottom: 1.2rem; }
+    .section-tagline { font-family: var(--fs); font-size: 1.05rem; font-weight: 300; font-style: italic; color: var(--muted); max-width: 500px; line-height: 1.6; }
+    .section-rule { width: 40px; height: 2px; margin-top: 1.6rem; opacity: 0.6; }
+
+    /* ── CARD GRID ── */
+    .section-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 1px; border: 1px solid var(--rule); background: var(--rule); }
+    .story-card { padding: 1.8rem; display: flex; gap: 1.2rem; border: none; transition: background 0.15s; position: relative; }
+    .story-card:hover { background: #FFFEF9 !important; }
+    .story-card::before { content: ''; position: absolute; top: 0; left: 0; bottom: 0; width: 3px; opacity: 0; transition: opacity 0.15s; }
+    .story-card:hover::before { opacity: 1; }
+
+    .card-hero    { grid-column: span 7; min-height: 220px; }
+    .card-wide    { grid-column: span 5; min-height: 220px; }
+    .card-compact { grid-column: span 4; }
+    .card-accent  { grid-column: span 5; }
+    .card-minimal { grid-column: span 3; }
+
+    .card-numeral { font-family: var(--fh); font-size: 3.2rem; font-weight: 300; font-style: italic; line-height: 1; opacity: 0.1; flex-shrink: 0; user-select: none; transition: opacity 0.15s; }
+    .story-card:hover .card-numeral { opacity: 0.22; }
+    .card-hero .card-numeral { font-size: 5rem; }
+
+    .card-body { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 0.55rem; }
+    .card-meta { display: flex; align-items: center; gap: 0.55rem; flex-wrap: wrap; }
+
+    .source-tag, .flag-badge, .au-badge { font-family: var(--fm); font-size: 0.52rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.15em 0.5em; border-radius: 2px; }
+    .source-tag { border: 1px solid; background: transparent; }
+    .flag-badge { background: var(--yellow); color: var(--black); }
+    .au-badge   { background: var(--blue);   color: #fff; }
+    .card-score { font-family: var(--fm); font-size: 0.55rem; color: var(--muted); margin-left: auto; }
+
+    .card-title { font-family: var(--fs); font-size: 1rem; font-weight: 600; line-height: 1.35; flex: 1; }
+    .card-hero .card-title { font-size: 1.25rem; }
+    .card-title a { transition: color 0.15s; }
+    .card-title a:hover { opacity: 0.65; }
+    .card-footer { font-family: var(--fm); font-size: 0.54rem; color: var(--muted); margin-top: auto; }
+
+    /* ── DIVIDERS — thin rule + colour dots ── */
+    .section-divider { display: flex; align-items: center; gap: 0.75rem; padding: 2rem 5rem; }
+    .section-divider::before, .section-divider::after { content: ''; flex: 1; height: 1px; background: var(--rule); }
+    .divider-dots { display: flex; gap: 5px; }
+    .divider-dots span { width: 7px; height: 7px; border-radius: 50%; display: block; }
+
+    /* ── FOOTER ── */
+    .mag-footer { background: #FDFAF5; border-top: 3px solid var(--ink); padding: 2.5rem 5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.5rem; margin-top: 4rem; }
+    .footer-brand { font-family: var(--fh); font-size: 1.8rem; font-weight: 600; }
+    .footer-brand .kaswari { color: var(--red); }
+    .footer-brand .news    { color: var(--blue); font-style: italic; font-weight: 300; }
+    .footer-brand .dot     { color: var(--yellow); }
+    .footer-meta { font-family: var(--fm); font-size: 0.55rem; letter-spacing: 0.1em; color: var(--muted); text-align: right; line-height: 2; }
+
+    @media (max-width: 860px) {
+      .masthead, .mag-section, .mag-footer { padding: 2rem 1.5rem; }
+      .masthead { grid-template-columns: 1fr; }
+      .section-nav { padding: 0 1rem; }
+      .section-divider { padding: 1.5rem; }
+      .section-grid { grid-template-columns: 1fr; background: transparent; border: 1px solid var(--rule); gap: 0; }
+      .story-card { grid-column: span 1 !important; border-bottom: 1px solid var(--rule); }
+      .mag-footer { flex-direction: column; }
+      .footer-meta { text-align: left; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="colour-bar"></div>
+
+<header class="masthead">
+  <div>
+    <div class="masthead-top">
+      <div class="pub-name">
+        <span class="kaswari">Kaswari</span> <span class="news">News</span><span class="dot">.</span>
+      </div>
+    </div>
+    <div class="pub-sub">HN · Reddit · Substack · Curated Daily · Wednesday 29 April 2026</div>
+  </div>
+  <div class="masthead-right">
+    <div class="issue-count">42</div>
+    <div class="issue-count-label">Stories Today</div>
+    <div class="issue-sources">
+      Hacker News · 17 News Feeds<br>
+      22 Substack Writers<br>
+      Max 25% US · 🇦🇺 AU Boosted
+    </div>
+  </div>
+</header>
+
+<nav class="section-nav">
+  <a href="#section-MOVE"  class="nav-item nav-move">MOVE</a>
+  <a href="#section-EAT"   class="nav-item nav-eat">EAT</a>
+  <a href="#section-SLEEP" class="nav-item nav-sleep">SLEEP</a>
+</nav>
+
+
+<section class="mag-section" id="section-MOVE" style="background:#FFFDF7">
+  <header class="section-header">
+    <div class="section-eyebrow" style="color:#990000">Wednesday 29 April 2026</div>
+    <h2 class="section-title" style="color:#990000">MOVE</h2>
+    <p class="section-tagline" style="color:#1C1008">What's shifting. What's launching. What demands attention.</p>
+    <div class="section-rule" style="background:#990000"></div>
+  </header>
+  <div class="section-grid">
+    
+  <article class="story-card card-hero" style="background:#FFFFFF;border-color:#EDE8DF">
+    <div class="card-numeral" style="color:#990000">01</div>
+    <div class="card-body">
+      <div class="card-meta">
+        <span class="source-tag" style="border-color:#713907;color:#713907">Hacker News</span>
+        
+        <span class="card-score" style="color:#1C1008">891</span>
+      </div>
+      <h3 class="card-title"><a href="https://github.com/localsend/localsend" target="_blank" rel="noopener" style="color:#1C1008">Localsend: An open-source cross-platform alternative to AirDrop</a></h3>
+      <div class="card-footer" style="color:#1C1008">274 comments</div>
+    </div>
+  </article>
+
+  <article class="story-card card-wide" style="background:#FFFFFF;border-color:#EDE8DF">
+    <div class="card-numeral" style="color:#990000">02</div>
+    <div class="card-body">
+      <div class="card-meta">
+        <span class="source-tag" style="border-color:#713907;color:#713907">Secrets of Privacy</span>
+        <span class="flag-badge">★ WATCH</span>
+        <span class="card-score" style="color:#1C1008">500</span>
+      </div>
+      <h3 class="card-title"><a href="https://www.secretsofprivacy.com/p/your-workday-is-now-ai-training-data" target="_blank" rel="noopener" style="color:#1C1008">Your Workday Is Now AI Training Data</a></h3>
+      
+    </div>
+  </article>
+
+  <article class="story-card card-compact" style="background:#FFFFFF;border-color:#EDE8DF">
+    <div class="card-numeral" style="color:#990000">03</div>
+    <div class="card-body">
+      <div class="card-meta">
+        <span class="source-tag" style="border-color:#713907;color:#713907">Secrets of Privacy</span>
+        <span class="flag-badge">★ WATCH</span>
+        <span class="card-score" style="color:#1C1008">500</span>
+      </div>
+      <h3 class="card-title"><a href="https://www.secretsofprivacy.com/p/okcupid-gave-your-face-to-an-ai-company" target="_blank" rel="noopener" style="color:#1C1008">OkCupid Gave Your Face to an AI Company</a></h3>
+      
+    </div>
+  </article>
+
+  <article class="story-card card-accent" style="background:#FFFFFF;border-color:#EDE8DF">
+    <div class="card-numeral" style="color:#990000">04</div>
+    <div class="card-body">
+      <div class="card-meta">
+        <span class="source-tag" style="border-color:#417DC1;color:#417DC1">Expat Prep</span>
+        
+        <span class="card-score" style="color:#1C1008">500</span>
+      </div>
+      <h3 class="card-title"><a href="https://expatprep.substack.com/p/housekeeping-in-a-time-of-war" target="_blank" rel="noopener" style="color:#1C1008">Housekeeping in a Time of War</a></h3>
+      
+    </div>
+  </article>
+
+  <article class="story-card card-minimal" style="background:#FFFFFF;border-color:#EDE8DF">
+    <div class="card-numeral" style="color:#990000">05</div>
+    <div class="card-body">
+      <div class="card-meta">
+        <span class="source-tag" style="border-color:#417DC1;color:#417DC1">Regen Earth Studio</span>
+        
+        <span class="card-score" style="color:#1C1008">500</span>
+      </div>
+      <h3 class="card-title"><a href="https://regenearthstudio.substack.com/p/project-raising-session-4-loci" target="_blank" rel="noopener" style="color:#1C1008">Project Raising Session 4: Loci</a></h3>
+      
+    </div>
+  </article>
+
+  <article class="story-card card-hero" style="background:#FFFFFF;border-color:#EDE8DF">
+    <div class="card-numeral" style="color:#990000">06</div>
+    <div class="card-body">
+      <div class="card-meta">
+        <span class="source-tag" style="border-color:#417DC1;color:#417DC1">Regen Earth Studio</span>
+        
+        <span class="card-score" style="color:#1C1008">500</span>
+      </div>
+      <h3 class="card-title"><a href="https://regenearthstudio.substack.com/p/business-as-revolution" target="_blank" rel="noopener" style="color:#1C1008">Business as rEvolution</a></h3>
+      
+    </div>
+  </article>
+
+  <article class="story-card card-wide" style="background:#FFFFFF;border-color:#EDE8DF">
+    <div class="card-numeral" style="color:#990000">07</div>
+    <div class="card-body">
+      <div class="card-meta">
+        <span class="source-tag" style="border-color:#990000;color:#990000">Sanderson</span>
+        
+        <span class="card-score" style="color:#1C1008">500</span>
+      </div>
+      <h3 class="card-title"><a href="https://sanderson1581.substack.com/p/the-shoggoth-humans-looking-at-ai" target="_blank" rel="noopener" style="color:#1C1008">The Shoggoth: Humans Looking at AI</a></h3>
+      
+    </div>
+  </article>
+
+  <article class="story-card card-compact" style="background:#FFFFFF;border-color:#EDE8DF">
+    <div class="card-numeral" style="color:#990000">08</div>
+    <div class="card-body">
+      <div class="card-meta">
+        <span class="source-tag" style="border-color:#990000;color:#990000">Sanderson</span>
+        
+        <span class="card-score" style="color:#1C1008">500</span>
+      </div>
+      <h3 class="card-title"><a href="https://sanderson1581.substack.com/p/the-limits-of-ai-why-i-am-not-worried" target="_blank" rel="noopener" style="color:#1C1008">The Limits of AI - Why I am not Worried</a></h3>
+      
+    </div>
+  </article>
+
+  <article class="story-card card-accent" style="background:#FFFFFF;border-color:#EDE8DF">
+    <div class="card-numeral" style="color:#990000">09</div>
+    <div class="card-body">
+      <div class="card-meta">
+        <span class="source-tag" style="border-color:#417DC1;color:#417DC1">American Political Freakshow</span>
+        
+        <span class="card-score" style="color:#1C1008">500</span>
+      </div>
+      <h3 class="card-title"><a href="https://www.americanfreakshow.news/p/epstein-class-supervillain-peter" target="_blank" rel="noopener" style="color:#1C1008">Epstein Class Supervillain Peter Thiel Loves Secrets</a></h3>
+      
+    </div>
+  </article>
+
+  <article class="story-card card-minimal" style="background:#FFFFFF;border-color:#EDE8DF">
+    <div class="card-numeral" style="color:#990000">10</div>
+    <div class="card-body">
+      <div class="card-meta">
+        <span class="source-tag" style="border-color:#990000;color:#990000">Made With Lau</span>
+        
+        <span class="card-score" style="color:#1C1008">500</span>
+      </div>
+      <h3 class="card-title"><a href="https://newsletter.madewithlau.com/p/dads-longevity-noodles-and-our-new" target="_blank" rel="noopener" style="color:#1C1008">Dad's LONGEVITY NOODLES (and our new house!) (三鮮伊面)</a></h3>
+      
+    </div>
+  </article>
+
+  <article class="story-card card-hero" style="background:#FFFFFF;border-color:#EDE8DF">
+    <div class="card-numeral" style="color:#990000">11</div>
+    <div class="card-body">
+      <div class="card-meta">
+        <span class="source-tag" style="border-color:#713907;color:#713907">Hacker News</span>
+        
+        <span class="card-score" style="color:#1C1008">485</span>
+      </div>
+      <h3 class="card-title"><a href="https://www.nldigitalgovernment.nl/news/soft-launch-for-government-open-source-code-platform/" target="_blank" rel="noopener" style="color:#1C1008">Soft launch of open-source code platform for government</a></h3>
+      <div class="card-footer" style="color:#1C1008">113 comments</div>
+    </div>
+  </article>
+
+  <article class="story-card card-wide" style="background:#FFFFFF;border-color:#EDE8DF">
+    <div class="card-numeral" style="color:#990000">12</div>
+    <div class="card-body">
+      <div class="card-meta">
+        <span class="source-tag" style="border-color:#005689;color:#005689">Guardian World</span>
+        <span class="au-badge">🇦🇺 AU</span>
+        <span class="card-score" style="color:#1C1008">420</span>
+      </div>
+      <h3 class="card-title"><a href="https://www.theguardian.com/world/2026/apr/29/south-africa-deports-mugabes-son-after-separate-offences-three-months-after-shooting-at-family-home" target="_blank" rel="noopener" style="color:#1C1008">South Africa deports Mugabe’s son for unrelated offences after employee shot at family home</a></h3>
+      
+    </div>
+  </article>
+
+  <article class="story-card card-compact" style="background:#FFFFFF;border-color:#EDE8DF">
+    <div class="card-numeral" style="color:#990000">13</div>
+    <div class="card-body">
+      <div class="card-meta">
+        <span class="source-tag" style="border-color:#005689;color:#005689">Guardian World</span>
+        <span class="au-badge">🇦🇺 AU</span>
+        <span class="card-score" style="color:#1C1008">420</span>
+      </div>
+      <h3 class="card-title"><a href="https://www.theguardian.com/world/2026/apr/29/africa-music-industry-ai-artificial-intelligence" target="_blank" rel="noopener" style="color:#1C1008">‘It will never cover what’s authentic’: African music industry weighs up AI risks and rewards</a></h3>
+      
+    </div>
+  </article>
+
+  <article class="story-card card-accent" style="background:#FFFFFF;border-color:#EDE8DF">
+    <div class="card-numeral" style="color:#990000">14</div>
+    <div class="card-body">
+      <div class="card-meta">
+        <span class="source-tag" style="border-color:#005689;color:#005689">Guardian World</span>
+        <span class="au-badge">🇦🇺 AU</span>
+        <span class="card-score" style="color:#1C1008">420</span>
+      </div>
+      <h3 class="card-title"><a href="https://www.theguardian.com/world/2026/apr/28/russia-claims-its-africa-corps-group-prevented-coup-in-mali-after-rebels-seize-towns" target="_blank" rel="noopener" style="color:#1C1008">Russia claims its Africa Corps group prevented coup in Mali after rebels seize towns</a></h3>
+      
+    </div>
+  </article>
+  </div>
+</section>
+<div class="section-divider">
+  <div class="divider-dots">
+    <span style="background:var(--red)"></span>
+    <span style="background:var(--yellow)"></span>
+    <span style="background:var(--blue)"></span>
+    <span style="background:var(--brown)"></span>
+    <span style="background:var(--black)"></span>
+  </div>
+</div>
+
+<section class="mag-section" id="section-EAT" style="background:#F7F9FC">
+  <header class="section-header">
+    <div class="section-eyebrow" style="color:#417DC1">Wednesday 29 April 2026</div>
+    <h2 class="section-title" style="color:#417DC1">EAT</h2>
+    <p class="section-tagline" style="color:#0D1A2B">Ideas worth ingesting. Tools, recipes, research, and deep reads.</p>
+    <div class="section-rule" style="background:#417DC1"></div>
+  </header>
+  <div class="section-grid">
+    
+  <article class="story-card card-hero" style="background:#FFFFFF;border-color:#DDE6F0">
+    <div class="card-numeral" style="color:#417DC1">01</div>
+    <div class="card-body">
+      <div class="card-meta">
+        <span class="source-tag" style="border-color:#713907;color:#713907">Hacker News</span>
+        
+        <span class="card-score" style="color:#0D1A2B">3.3k</span>
+      </div>
+      <h3 class="card-title"><a href="https://mitchellh.com/writing/ghostty-leaving-github" target="_blank" rel="noopener" style="color:#0D1A2B">Ghostty is leaving GitHub</a></h3>
+      <div class="card-footer" style="color:#0D1A2B">966 comments</div>
+    </div>
+  </article>
+
+  <article class="story-card card-wide" style="background:#FFFFFF;border-color:#DDE6F0">
+    <div class="card-numeral" style="color:#417DC1">02</div>
+    <div class="card-body">
+      <div class="card-meta">
+        <span class="source-tag" style="border-color:#713907;color:#713907">Hacker News</span>
+        
+        <span class="card-score" style="color:#0D1A2B">1.6k</span>
+      </div>
+      <h3 class="card-title"><a href="https://keepandroidopen.org/en/" target="_blank" rel="noopener" style="color:#0D1A2B">Your phone is about to stop being yours</a></h3>
+      <div class="card-footer" style="color:#0D1A2B">824 comments</div>
+    </div>
+  </article>
+
+  <article class="story-card card-compact" style="background:#FFFFFF;border-color:#DDE6F0">
+    <div class="card-numeral" style="color:#417DC1">03</div>
+    <div class="card-body">
+      <div class="card-meta">
+        <span class="source-tag" style="border-color:#713907;color:#713907">Hacker News</span>
+        
+        <span class="card-score" style="color:#0D1A2B">1.2k</span>
+      </div>
+      <h3 class="card-title"><a href="https://zed.dev/blog/zed-1-0" target="_blank" rel="noopener" style="color:#0D1A2B">Zed 1.0</a></h3>
+      <div class="card-footer" style="color:#0D1A2B">399 comments</div>
+    </div>
+  </article>
+
+  <article class="story-card card-accent" style="background:#FFFFFF;border-color:#DDE6F0">
+    <div class="card-numeral" style="color:#417DC1">04</div>
+    <div class="card-body">
+      <div class="card-meta">
+        <span class="source-tag" style="border-color:#713907;color:#713907">Hacker News</span>
+        
+        <span class="card-score" style="color:#0D1A2B">741</span>
+      </div>
+      <h3 class="card-title"><a href="https://talkie-lm.com/introducing-talkie" target="_blank" rel="noopener" style="color:#0D1A2B">Talkie: a 13B vintage language model from 1930</a></h3>
+      <div class="card-footer" style="color:#0D1A2B">315 comments</div>
+    </div>
+  </article>
+
+  <article class="story-card card-minimal" style="background:#FFFFFF;border-color:#DDE6F0">
+    <div class="card-numeral" style="color:#417DC1">05</div>
+    <div class="card-body">
+      <div class="card-meta">
+        <span class="source-tag" style="border-color:#713907;color:#713907">Hacker News</span>
+        
+        <span class="card-score" style="color:#0D1A2B">638</span>
+      </div>
+      <h3 class="card-title"><a href="https://lucumr.pocoo.org/2026/4/28/before-github/" target="_blank" rel="noopener" style="color:#0D1A2B">Before GitHub</a></h3>
+      <div class="card-footer" style="color:#0D1A2B">209 comments</div>
+    </div>
+  </article>
+
+  <article class="story-card card-hero" style="background:#FFFFFF;border-color:#DDE6F0">
+    <div class="card-numeral" style="color:#417DC1">06</div>
+    <div class="card-body">
+      <div class="card-meta">
+        <span class="source-tag" style="border-color:#713907;color:#713907">Hacker News</span>
+        <span class="flag-badge">★ WATCH</span>
+        <span class="card-score" style="color:#0D1A2B">630</span>
+      </div>
+      <h3 class="card-title"><a href="https://github.com/anthropics/claude-code/issues/53262" target="_blank" rel="noopener" style="color:#0D1A2B">HERMES.md: Anthropic bug causes $200 extra charge, refuses refund</a></h3>
+      <div class="card-footer" style="color:#0D1A2B">242 comments</div>
+    </div>
+  </article>
+
+  <article class="story-card card-wide" style="background:#FFFFFF;border-color:#DDE6F0">
+    <div class="card-numeral" style="color:#417DC1">07</div>
+    <div class="card-body">
+      <div class="card-meta">
+        <span class="source-tag" style="border-color:#713907;color:#713907">Hacker News</span>
+        
+        <span class="card-score" style="color:#0D1A2B">600</span>
+      </div>
+      <h3 class="card-title"><a href="https://corrode.dev/blog/bugs-rust-wont-catch/" target="_blank" rel="noopener" style="color:#0D1A2B">Bugs Rust won't catch</a></h3>
+      <div class="card-footer" style="color:#0D1A2B">327 comments</div>
+    </div>
+  </article>
+
+  <article class="story-card card-compact" style="background:#FFFFFF;border-color:#DDE6F0">
+    <div class="card-numeral" style="color:#417DC1">08</div>
+    <div class="card-body">
+      <div class="card-meta">
+        <span class="source-tag" style="border-color:#713907;color:#713907">Hacker News</span>
+        
+        <span class="card-score" style="color:#0D1A2B">544</span>
+      </div>
+      <h3 class="card-title"><a href="https://x.com/GlennMeder/status/2049088498163216560" target="_blank" rel="noopener" style="color:#0D1A2B">Online age verification is the hill to die on</a></h3>
+      <div class="card-footer" style="color:#0D1A2B">357 comments</div>
+    </div>
+  </article>
+
+  <article class="story-card card-accent" style="background:#FFFFFF;border-color:#DDE6F0">
+    <div class="card-numeral" style="color:#417DC1">09</div>
+    <div class="card-body">
+      <div class="card-meta">
+        <span class="source-tag" style="border-color:#417DC1;color:#417DC1">Alon Mizrahi</span>
+        
+        <span class="card-score" style="color:#0D1A2B">500</span>
+      </div>
+      <h3 class="card-title"><a href="https://alonmizrahi.substack.com/p/day-57-expecting-great-violence" target="_blank" rel="noopener" style="color:#0D1A2B">Day 57: expecting great violence</a></h3>
+      
+    </div>
+  </article>
+
+  <article class="story-card card-minimal" style="background:#FFFFFF;border-color:#DDE6F0">
+    <div class="card-numeral" style="color:#417DC1">10</div>
+    <div class="card-body">
+      <div class="card-meta">
+        <span class="source-tag" style="border-color:#417DC1;color:#417DC1">Alon Mizrahi</span>
+        
+        <span class="card-score" style="color:#0D1A2B">500</span>
+      </div>
+      <h3 class="card-title"><a href="https://alonmizrahi.substack.com/p/day-54-donald-stuck" target="_blank" rel="noopener" style="color:#0D1A2B">Day 54: Donald Stuck</a></h3>
+      
+    </div>
+  </article>
+
+  <article class="story-card card-hero" style="background:#FFFFFF;border-color:#DDE6F0">
+    <div class="card-numeral" style="color:#417DC1">11</div>
+    <div class="card-body">
+      <div class="card-meta">
+        <span class="source-tag" style="border-color:#417DC1;color:#417DC1">Alon Mizrahi</span>
+        
+        <span class="card-score" style="color:#0D1A2B">500</span>
+      </div>
+      <h3 class="card-title"><a href="https://alonmizrahi.substack.com/p/day-50-no-dignity-no-prosperity" target="_blank" rel="noopener" style="color:#0D1A2B">Day 50: no dignity, no prosperity</a></h3>
+      
+    </div>
+  </article>
+
+  <article class="story-card card-wide" style="background:#FFFFFF;border-color:#DDE6F0">
+    <div class="card-numeral" style="color:#417DC1">12</div>
+    <div class="card-body">
+      <div class="card-meta">
+        <span class="source-tag" style="border-color:#990000;color:#990000">Mike Brock</span>
+        
+        <span class="card-score" style="color:#0D1A2B">500</span>
+      </div>
+      <h3 class="card-title"><a href="https://www.notesfromthecircus.com/p/catastrophe-has-come" target="_blank" rel="noopener" style="color:#0D1A2B">Catastrophe Has Come</a></h3>
+      
+    </div>
+  </article>
+
+  <article class="story-card card-compact" style="background:#FFFFFF;border-color:#DDE6F0">
+    <div class="card-numeral" style="color:#417DC1">13</div>
+    <div class="card-body">
+      <div class="card-meta">
+        <span class="source-tag" style="border-color:#713907;color:#713907">Secrets of Privacy</span>
+        <span class="flag-badge">★ WATCH</span>
+        <span class="card-score" style="color:#0D1A2B">500</span>
+      </div>
+      <h3 class="card-title"><a href="https://www.secretsofprivacy.com/p/stop-trying-to-detect-fraud-and-scams" target="_blank" rel="noopener" style="color:#0D1A2B">Trying to Detect Fraud and Scams Won't Save You Anymore</a></h3>
+      
+    </div>
+  </article>
+
+  <article class="story-card card-accent" style="background:#FFFFFF;border-color:#DDE6F0">
+    <div class="card-numeral" style="color:#417DC1">14</div>
+    <div class="card-body">
+      <div class="card-meta">
+        <span class="source-tag" style="border-color:#417DC1;color:#417DC1">Expat Prep</span>
+        
+        <span class="card-score" style="color:#0D1A2B">500</span>
+      </div>
+      <h3 class="card-title"><a href="https://expatprep.substack.com/p/the-long-way-to-freedom" target="_blank" rel="noopener" style="color:#0D1A2B">"The Long Way" to Freedom</a></h3>
+      
+    </div>
+  </article>
+  </div>
+</section>
+<div class="section-divider">
+  <div class="divider-dots">
+    <span style="background:var(--blue)"></span>
+    <span style="background:var(--yellow)"></span>
+    <span style="background:var(--red)"></span>
+    <span style="background:var(--brown)"></span>
+    <span style="background:var(--black)"></span>
+  </div>
+</div>
+
+<section class="mag-section" id="section-SLEEP" style="background:#F9F7F4">
+  <header class="section-header">
+    <div class="section-eyebrow" style="color:#713907">Wednesday 29 April 2026</div>
+    <h2 class="section-title" style="color:#713907">SLEEP</h2>
+    <p class="section-tagline" style="color:#1C1008">Slow, strange, and worth sitting with.</p>
+    <div class="section-rule" style="background:#713907"></div>
+  </header>
+  <div class="section-grid">
+    
+  <article class="story-card card-hero" style="background:#FFFFFF;border-color:#E8E0D4">
+    <div class="card-numeral" style="color:#713907">01</div>
+    <div class="card-body">
+      <div class="card-meta">
+        <span class="source-tag" style="border-color:#990000;color:#990000">Mike Brock</span>
+        
+        <span class="card-score" style="color:#1C1008">500</span>
+      </div>
+      <h3 class="card-title"><a href="https://www.notesfromthecircus.com/p/the-ritual" target="_blank" rel="noopener" style="color:#1C1008">The Ritual</a></h3>
+      
+    </div>
+  </article>
+
+  <article class="story-card card-wide" style="background:#FFFFFF;border-color:#E8E0D4">
+    <div class="card-numeral" style="color:#713907">02</div>
+    <div class="card-body">
+      <div class="card-meta">
+        <span class="source-tag" style="border-color:#990000;color:#990000">Mike Brock</span>
+        
+        <span class="card-score" style="color:#1C1008">500</span>
+      </div>
+      <h3 class="card-title"><a href="https://www.notesfromthecircus.com/p/the-most-articulate-apologist" target="_blank" rel="noopener" style="color:#1C1008">The Most Articulate Apologist</a></h3>
+      
+    </div>
+  </article>
+
+  <article class="story-card card-compact" style="background:#FFFFFF;border-color:#E8E0D4">
+    <div class="card-numeral" style="color:#713907">03</div>
+    <div class="card-body">
+      <div class="card-meta">
+        <span class="source-tag" style="border-color:#713907;color:#713907">The Culturist</span>
+        
+        <span class="card-score" style="color:#1C1008">500</span>
+      </div>
+      <h3 class="card-title"><a href="https://www.theculturist.io/p/where-to-start-with-opera" target="_blank" rel="noopener" style="color:#1C1008">Where to Start With Opera</a></h3>
+      
+    </div>
+  </article>
+
+  <article class="story-card card-accent" style="background:#FFFFFF;border-color:#E8E0D4">
+    <div class="card-numeral" style="color:#713907">04</div>
+    <div class="card-body">
+      <div class="card-meta">
+        <span class="source-tag" style="border-color:#713907;color:#713907">The Culturist</span>
+        
+        <span class="card-score" style="color:#1C1008">500</span>
+      </div>
+      <h3 class="card-title"><a href="https://www.theculturist.io/p/book-club-recap-the-sun-also-rises-28a" target="_blank" rel="noopener" style="color:#1C1008">Book Club Recap: The Sun Also Rises</a></h3>
+      
+    </div>
+  </article>
+
+  <article class="story-card card-minimal" style="background:#FFFFFF;border-color:#E8E0D4">
+    <div class="card-numeral" style="color:#713907">05</div>
+    <div class="card-body">
+      <div class="card-meta">
+        <span class="source-tag" style="border-color:#417DC1;color:#417DC1">Regen Earth Studio</span>
+        
+        <span class="card-score" style="color:#1C1008">500</span>
+      </div>
+      <h3 class="card-title"><a href="https://regenearthstudio.substack.com/p/realizing-our-collaborative-potency" target="_blank" rel="noopener" style="color:#1C1008">Realizing our Collaborative Potency in Service of Regenerative Living</a></h3>
+      
+    </div>
+  </article>
+
+  <article class="story-card card-hero" style="background:#FFFFFF;border-color:#E8E0D4">
+    <div class="card-numeral" style="color:#713907">06</div>
+    <div class="card-body">
+      <div class="card-meta">
+        <span class="source-tag" style="border-color:#005689;color:#005689">Guardian Env</span>
+        <span class="au-badge">🇦🇺 AU</span><span class="flag-badge">★ WATCH</span>
+        <span class="card-score" style="color:#1C1008">420</span>
+      </div>
+      <h3 class="card-title"><a href="https://www.theguardian.com/environment/2026/apr/30/hot-weather-and-hungry-datacentres-lift-australias-energy-demand-to-record-highs-but-batteries-quell-prices" target="_blank" rel="noopener" style="color:#1C1008">Hot weather and hungry datacentres lift Australia’s energy demand to record highs but batteries quell prices</a></h3>
+      
+    </div>
+  </article>
+
+  <article class="story-card card-wide" style="background:#FFFFFF;border-color:#E8E0D4">
+    <div class="card-numeral" style="color:#713907">07</div>
+    <div class="card-body">
+      <div class="card-meta">
+        <span class="source-tag" style="border-color:#005689;color:#005689">Guardian Env</span>
+        <span class="au-badge">🇦🇺 AU</span>
+        <span class="card-score" style="color:#1C1008">420</span>
+      </div>
+      <h3 class="card-title"><a href="https://www.theguardian.com/environment/2026/apr/23/governments-failed-to-deliver-160m-of-river-improvements-including-for-now-parched-nsw-wetlands-report-finds" target="_blank" rel="noopener" style="color:#1C1008">Governments failed to deliver $160m of river improvements including for now-parched NSW wetlands, report finds</a></h3>
+      
+    </div>
+  </article>
+
+  <article class="story-card card-compact" style="background:#FFFFFF;border-color:#E8E0D4">
+    <div class="card-numeral" style="color:#713907">08</div>
+    <div class="card-body">
+      <div class="card-meta">
+        <span class="source-tag" style="border-color:#8E44AD;color:#8E44AD">Aeon</span>
+        <span class="au-badge">🇦🇺 AU</span>
+        <span class="card-score" style="color:#1C1008">420</span>
+      </div>
+      <h3 class="card-title"><a href="https://aeon.co/videos/yoruba-spirituality-inspires-surreal-sculptures-in-this-sacred-grove?utm_source=rss-feed" target="_blank" rel="noopener" style="color:#1C1008">Africa’s cultural landmarks: Ọṣun-Òṣogbo Sacred Grove, Nigeria</a></h3>
+      
+    </div>
+  </article>
+
+  <article class="story-card card-accent" style="background:#FFFFFF;border-color:#E8E0D4">
+    <div class="card-numeral" style="color:#713907">09</div>
+    <div class="card-body">
+      <div class="card-meta">
+        <span class="source-tag" style="border-color:#8B4513;color:#8B4513">Atlas Obscura</span>
+        <span class="au-badge">🇦🇺 AU</span>
+        <span class="card-score" style="color:#1C1008">420</span>
+      </div>
+      <h3 class="card-title"><a href="https://www.atlasobscura.com/places/africatown-heritage-house" target="_blank" rel="noopener" style="color:#1C1008">Africatown Heritage House in Mobile, Alabama</a></h3>
+      
+    </div>
+  </article>
+
+  <article class="story-card card-minimal" style="background:#FFFFFF;border-color:#E8E0D4">
+    <div class="card-numeral" style="color:#713907">10</div>
+    <div class="card-body">
+      <div class="card-meta">
+        <span class="source-tag" style="border-color:#BB1919;color:#BB1919">BBC Science</span>
+        
+        <span class="card-score" style="color:#1C1008">300</span>
+      </div>
+      <h3 class="card-title"><a href="https://www.bbc.com/news/articles/c78q5pygn66o?at_medium=RSS&amp;at_campaign=rss" target="_blank" rel="noopener" style="color:#1C1008">Global forest loss slows but El Niño fires could threaten progress</a></h3>
+      
+    </div>
+  </article>
+
+  <article class="story-card card-hero" style="background:#FFFFFF;border-color:#E8E0D4">
+    <div class="card-numeral" style="color:#713907">11</div>
+    <div class="card-body">
+      <div class="card-meta">
+        <span class="source-tag" style="border-color:#BB1919;color:#BB1919">BBC Science</span>
+        
+        <span class="card-score" style="color:#1C1008">300</span>
+      </div>
+      <h3 class="card-title"><a href="https://www.bbc.com/news/articles/cpqpj7wy4x4o?at_medium=RSS&amp;at_campaign=rss" target="_blank" rel="noopener" style="color:#1C1008">£20m mystery gift buys London Zoo new hospital where you can watch vets work</a></h3>
+      
+    </div>
+  </article>
+
+  <article class="story-card card-wide" style="background:#FFFFFF;border-color:#E8E0D4">
+    <div class="card-numeral" style="color:#713907">12</div>
+    <div class="card-body">
+      <div class="card-meta">
+        <span class="source-tag" style="border-color:#BB1919;color:#BB1919">BBC Science</span>
+        
+        <span class="card-score" style="color:#1C1008">300</span>
+      </div>
+      <h3 class="card-title"><a href="https://www.bbc.com/news/articles/c6244zv02ero?at_medium=RSS&amp;at_campaign=rss" target="_blank" rel="noopener" style="color:#1C1008">'We're living in a shed because of river pollution'</a></h3>
+      
+    </div>
+  </article>
+
+  <article class="story-card card-compact" style="background:#FFFFFF;border-color:#E8E0D4">
+    <div class="card-numeral" style="color:#713907">13</div>
+    <div class="card-body">
+      <div class="card-meta">
+        <span class="source-tag" style="border-color:#BB1919;color:#BB1919">BBC Science</span>
+        
+        <span class="card-score" style="color:#1C1008">300</span>
+      </div>
+      <h3 class="card-title"><a href="https://www.bbc.com/news/articles/cx2rq92yv4vo?at_medium=RSS&amp;at_campaign=rss" target="_blank" rel="noopener" style="color:#1C1008">First ever talks to ditch fossil fuels as UN deadlock deepens</a></h3>
+      
+    </div>
+  </article>
+
+  <article class="story-card card-accent" style="background:#FFFFFF;border-color:#E8E0D4">
+    <div class="card-numeral" style="color:#713907">14</div>
+    <div class="card-body">
+      <div class="card-meta">
+        <span class="source-tag" style="border-color:#005689;color:#005689">Guardian Env</span>
+        
+        <span class="card-score" style="color:#1C1008">300</span>
+      </div>
+      <h3 class="card-title"><a href="https://www.theguardian.com/environment/2026/apr/24/a-history-of-the-earth-twelve-apostles-revealed-to-be-as-old-as-14m-years" target="_blank" rel="noopener" style="color:#1C1008">‘A history of the Earth’: Twelve Apostles revealed to be as old as 14m years</a></h3>
+      
+    </div>
+  </article>
+  </div>
+</section>
+
+<footer class="mag-footer">
+  <div class="footer-brand">
+    <span class="kaswari">Kaswari</span> <span class="news">News</span><span class="dot">.</span>
+  </div>
+  <div class="footer-meta">
+    Generated by Claude · 2026-04-29<br>
+    HN + BBC World · BBC Technology · BBC Science · BBC Business · Guardian World · Guardian Tech · Guardian Env · Ars Technica · The Verge · Phys.org · Prec. Nutrition · Aeon · Warren Ellis · AgFunder · Atlas Obscura · Sixth Tone · Dezeen
+  </div>
+</footer>
+
+</body>
+</html>
